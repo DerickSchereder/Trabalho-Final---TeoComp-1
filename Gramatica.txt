@@ -1,0 +1,19 @@
+<S> ::= "route" <Nome> "begin" <Viagem> "end"
+
+<Viagem> ::= <CarregaHeavy> <Viagem> <DescarregaHeavy> <Viagem>
+           | <CarregaLight> <Viagem> <DescarregaLight> <Viagem>
+           | "sail to" <Nome> <Viagem>
+           | ""
+
+<CarregaHeavy> ::= "load heavy" <Nome> "weight" <PesoHeavy> "kg"
+<DescarregaHeavy> ::= "unload heavy"
+
+<CarregaLight> ::= "load light" <Nome> "weight" <PesoLeve> "kg"
+<DescarregaLight> ::= "unload light"
+
+<PesoLeve> ::= <D1_9> | <D1_9> <D> | <D1_9> <D> <D>
+<PesoHeavy> ::= <D2_9> <D> <D> <D>
+
+<D> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<D1_9> ::= "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<D2_9> ::= "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
