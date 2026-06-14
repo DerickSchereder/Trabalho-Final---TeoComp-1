@@ -1,0 +1,131 @@
+import ply.lex as lex
+import ply.yacc as yacc
+
+# ==========================================
+#  LEXER e definições de tokens
+# ==========================================
+reserved = {
+    'route': 'ROUTE', 'begin': 'BEGIN', 'end': 'END',
+    'load': 'LOAD', 'unload': 'UNLOAD', 'sail': 'SAIL', 'to': 'TO',
+    'heavy': 'HEAVY', 'light': 'LIGHT',
+    'weight': 'WEIGHT', 'kg': 'KG'
+}
+
+tokens = ['NOME', 'PESO_LEVE', 'PESO_HEAVY'] + list(reserved.values())
+
+t_ignore = ' \t\n'
+
+def t_PESO_HEAVY(t):
+    r'\b[2-9]\d{3}\b'
+    t.value = int(t.value)
+    return t
+
+def t_PESO_LEVE(t):
+    r'\b[1-9]\d{0,2}\b'
+    t.value = int(t.value)
+    return t
+
+def t_NOME(t):
+    r'[A-Za-z_][A-Za-z0-9_]*'
+    t.type = reserved.get(t.value, 'NOME')
+    return t
+
+def t_error(t):
+    print(f"Caractere ilegal ignorado: '{t.value[0]}'")
+    t.lexer.skip(1)
+
+lexer = lex.lex()
+
+# ==========================================
+#  PARSER
+# ==========================================
+def p_S(p):
+    '''s : ROUTE NOME BEGIN fase_heavy END'''
+    p[0] = {'route_name': p[2], 'commands': p[4]}
+
+# --- FASE HEAVY ---
+def p_fase_heavy_load(p):
+    '''fase_heavy : LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy'''
+    load_cmd = {'action': 'load', 'type': 'heavy', 'name': p[3], 'weight': p[5]}
+    unload_cmd = {'action': 'unload', 'type': 'heavy', 'name': p[3], 'weight': p[5]}
+    p[0] = [load_cmd] + p[7] + [unload_cmd] + p[10]
+
+def p_fase_heavy_light(p):
+    '''fase_heavy : fase_light'''
+    p[0] = p[1]
+
+def p_fase_heavy_sail(p):
+    '''fase_heavy : SAIL TO NOME fase_heavy'''
+    p[0] = [{'action': 'sail', 'dest': p[3]}] + p[4]
+
+def p_fase_heavy_empty(p):
+    '''fase_heavy : empty'''
+    p[0] = []
+
+# --- FASE LIGHT ---
+def p_fase_light_load(p):
+    '''fase_light : LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light'''
+    load_cmd = {'action': 'load', 'type': 'light', 'name': p[3], 'weight': p[5]}
+    unload_cmd = {'action': 'unload', 'type': 'light', 'name': p[3], 'weight': p[5]}
+    p[0] = [load_cmd] + p[7] + [unload_cmd] + p[10]
+
+def p_fase_light_sail(p):
+    '''fase_light : SAIL TO NOME fase_light'''
+    p[0] = [{'action': 'sail', 'dest': p[3]}] + p[4]
+
+def p_fase_light_empty(p):
+    '''fase_light : empty'''
+    p[0] = []
+
+# --- VAZIO E ERRO ---
+def p_empty(p):
+    '''empty :'''
+    pass
+
+def p_error(p):
+    if p:
+        print(f"Erro de sintaxe próximo ao token '{p.value}'")
+    else:
+        print("Erro de sintaxe no final da entrada")
+
+parser = yacc.yacc()
+
+# ==========================================
+#  INTERPRETADOR
+# ==========================================
+def generate_report(ast):
+    print("="*50)
+    print(f"RELATÓRIO DE NAVEGAÇÃO | {ast['route_name']}")
+    print("="*50)
+
+    total_weight = 0
+
+    for cmd in ast['commands']:
+        if cmd['action'] == 'sail':
+            print(f"\nNAVEGANDO PARA: {cmd['dest']} | Peso a bordo: {total_weight}kg")
+        elif cmd['action'] == 'load':
+            total_weight += cmd['weight']
+            print(f"EMBARQUE: {cmd['name']} ({cmd['type']}) - {cmd['weight']}kg")
+        elif cmd['action'] == 'unload':
+            total_weight -= cmd['weight']
+            print(f"DESEMBARQUE: {cmd['name']} ({cmd['type']})")
+
+    print("\nSTATUS FINAL: Pilha vazia e rota concluída." if total_weight == 0 else "ERRO: Carga remanescente no navio.")
+
+
+import sys
+# para rodar o programa: python src/analisador.py inputs/input_1.txt
+if __name__ == "__main__":
+    # O arquivo é passado como argumento
+    if len(sys.argv) > 1:
+        nome_arquivo = sys.argv[1]
+    else:
+        print("Por favor, informe o arquivo de entrada. Exemplo: python analisador.py entrada.txt")
+        sys.exit(1)
+        
+    with open(nome_arquivo, "r", encoding="utf-8") as f:
+        codigo = f.read()
+        
+    resultado_ast = parser.parse(codigo, lexer=lexer)
+    if resultado_ast:
+        generate_report(resultado_ast)

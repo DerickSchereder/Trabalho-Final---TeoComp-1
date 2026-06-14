@@ -1,0 +1,8 @@
+route Rota_Alfa begin
+        load heavy Barras_Aco weight 4500 kg
+    sail to Porto_Seguro
+        load light Eletronicos weight 500 kg
+    sail to Porto_Destino
+        unload light
+        unload heavy
+    end
