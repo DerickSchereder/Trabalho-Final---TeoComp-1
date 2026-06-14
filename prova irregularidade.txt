@@ -1,0 +1,4 @@
+Prova de que a linguagem modelada não é regular:
+
+A gramática permite o aninhamento arbitrário de comandos 'load light' e 'unload light', por exemplo. Restringindo a linguagem às cadeias contendo apenas esses comandos e ignorando os demais símbolos, obtemos a linguagem :
+L = {a^n b^n}, onde "a" representa um carregamento leve(estrutura 'load light ...') e "b" representa um descarregamento leve(estrutura 'unload light'). Como {a^n b^n} é uma linguagem não regular,fato este que pode ser comprovado através do lema do bombeamento , conclui-se que a linguagem proposta também não é regular.
