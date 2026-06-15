@@ -16,7 +16,7 @@ tokens = ['NOME', 'PESO_LEVE', 'PESO_HEAVY'] + list(reserved.values())
 t_ignore = ' \t\n'
 
 def t_PESO_HEAVY(t):
-    r'\b[2-9]\d{3}\b'
+    r'\b[1-9]\d{3}\b'
     t.value = int(t.value)
     return t
 
