@@ -37,7 +37,7 @@ def t_error(t):
 lexer = lex.lex()
 
 # ==========================================
-#  PARSER
+#  PARSER e definições de produções
 # ==========================================
 def p_S(p):
     '''s : ROUTE NOME BEGIN fase_heavy END'''
@@ -91,30 +91,42 @@ def p_error(p):
 parser = yacc.yacc()
 
 # ==========================================
-#  INTERPRETADOR
+#  INTERPRETADOR e relatório final
 # ==========================================
 def generate_report(ast):
-    print("="*50)
-    print(f"RELATÓRIO DE NAVEGAÇÃO | {ast['route_name']}")
-    print("="*50)
+    print(f"\n\nRELATÓRIO DE NAVEGAÇÃO | {ast['route_name']}")
+    print("_"*50 + "\n")
 
     total_weight = 0
+    total_transported_containers = 0
     porto_atual = 'Porto_inicial'
     print('' + porto_atual + ":")
     for cmd in ast['commands']:
-        if cmd['action'] == 'sail':
-            print(f"\nNAVEGANDO PARA: {cmd['dest']} | Peso a bordo: {total_weight}kg")
-            porto_atual= cmd['dest']
-            print('' + porto_atual + ":")
-        elif cmd['action'] == 'load':
-            total_weight += cmd['weight']
-            print(f"EMBARQUE: {cmd['name']} ({cmd['type']}) - {cmd['weight']}kg")
-        elif cmd['action'] == 'unload':
-            total_weight -= cmd['weight']
-            print(f"DESEMBARQUE: {cmd['name']} ({cmd['type']})")
 
-    print("\nSTATUS FINAL: Pilha vazia e rota concluída." if total_weight == 0 else "ERRO: Carga remanescente no navio.")
+        match cmd['action']:
 
+            case 'sail':
+                print(f"\nNAVEGANDO PARA: {cmd['dest']} | Peso a bordo: {total_weight}kg\n")
+                porto_atual= cmd['dest']
+                print('' + porto_atual + ":")
+
+            case 'load':
+                total_weight += cmd['weight']
+                total_transported_containers += 1
+                print(f"EMBARQUE: {cmd['name']} ({cmd['type']}) - {cmd['weight']}kg")
+                
+
+            case 'unload':
+                total_weight -= cmd['weight']
+                print(f"DESEMBARQUE: {cmd['name']} ({cmd['type']})")
+
+
+    if total_weight == 0 :
+        print('\nSTATUS FINAL:')
+        print('Pilha vazia e rota concluída.')
+        print(f'Numero de cargas transportadas: {total_transported_containers}')
+    else: 
+        print("ERRO: Carga remanescente no navio.")
 
 import sys
 # para rodar o programa: python src/analisador.py inputs/input_1.txt
