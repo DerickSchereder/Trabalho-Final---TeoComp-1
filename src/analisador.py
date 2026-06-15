@@ -99,10 +99,13 @@ def generate_report(ast):
     print("="*50)
 
     total_weight = 0
-
+    porto_atual = 'Porto_inicial'
+    print('' + porto_atual + ":")
     for cmd in ast['commands']:
         if cmd['action'] == 'sail':
             print(f"\nNAVEGANDO PARA: {cmd['dest']} | Peso a bordo: {total_weight}kg")
+            porto_atual= cmd['dest']
+            print('' + porto_atual + ":")
         elif cmd['action'] == 'load':
             total_weight += cmd['weight']
             print(f"EMBARQUE: {cmd['name']} ({cmd['type']}) - {cmd['weight']}kg")
