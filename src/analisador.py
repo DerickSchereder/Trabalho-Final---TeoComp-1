@@ -171,12 +171,42 @@ parser = yacc.yacc()
 # ==========================================
 #  INTERPRETADOR e relatório final
 # ==========================================
+
+def raise_load_warning(type, count):
+    match type:
+        case 'heavy':
+            return
+        case 'food' :
+            if count[type] == 0 :
+                print('[AVISO]: Alimentos a bordo, proibida a entrada de cargas tóxicas')
+        case 'toxic':
+            if count[type] == 0 :
+                print('[AVISO]: Carga tóxica a bordo, proibida a entrada de alimentos')
+
+
+def raise_unload_warning(type, count):
+    match type:
+        case 'heavy':
+            return
+        case 'food' :
+            if count[type] == 1:
+                print('[AVISO]: Sem alimentos a bordo, liberada a entrada de cargas tóxicas')
+        case 'toxic':
+            if count[type] == 1:
+                print('[AVISO]: Sem cargas tóxicas a bordo, liberada a entrada de alimentos')
+
 def generate_report(ast):
     print(f"\n\nRELATÓRIO DE NAVEGAÇÃO | {ast['route_name']}")
     print("_"*50 + "\n")
 
     total_weight = 0
     total_transported_containers = 0
+    container_count = {
+        'heavy': 0,
+        'light': 0,
+        'food' : 0,
+        'toxic': 0
+    }
     porto_atual = 'Porto_inicial'
     print('' + porto_atual + ":")
     for cmd in ast['commands']:
@@ -191,12 +221,17 @@ def generate_report(ast):
             case 'load':
                 total_weight += cmd['weight']
                 total_transported_containers += 1
+                raise_load_warning(cmd['type'], container_count)
+                container_count[cmd['type']] += 1
                 print(f"EMBARQUE: {cmd['name']} ({cmd['type']}) - {cmd['weight']}kg")
                 
 
             case 'unload':
                 total_weight -= cmd['weight']
+                raise_unload_warning(cmd['type'], container_count)
+                container_count[cmd['type']] -= 1
                 print(f"DESEMBARQUE: {cmd['name']} ({cmd['type']})")
+
 
 
     if total_weight == 0 :

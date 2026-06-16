@@ -11,4 +11,5 @@ route Rota_Um begin
         unload toxic
         unload light
         unload heavy
+        unload heavy
     end
