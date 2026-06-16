@@ -5,53 +5,55 @@ Grammar
 Rule 0     S' -> s
 Rule 1     s -> ROUTE NOME BEGIN fase_heavy END
 Rule 2     fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
-Rule 3     fase_heavy -> fase_light
-Rule 4     fase_heavy -> SAIL TO NOME fase_heavy
-Rule 5     fase_heavy -> empty
-Rule 6     fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-Rule 7     fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-Rule 8     fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-Rule 9     fase_light -> SAIL TO NOME fase_light
-Rule 10    fase_light -> empty
-Rule 11    fase_light -> fase_food
-Rule 12    fase_light -> fase_toxic
-Rule 13    fase_food -> SAIL TO NOME fase_food
-Rule 14    fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-Rule 15    fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-Rule 16    fase_food -> empty
-Rule 17    fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-Rule 18    fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-Rule 19    fase_toxic -> SAIL TO NOME fase_toxic
-Rule 20    fase_toxic -> empty
-Rule 21    empty -> <empty>
+Rule 3     fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+Rule 4     fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+Rule 5     fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
+Rule 6     fase_heavy -> SAIL TO NOME fase_heavy
+Rule 7     fase_heavy -> empty
+Rule 8     fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+Rule 9     fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+Rule 10    fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+Rule 11    fase_light -> SAIL TO NOME fase_light
+Rule 12    fase_light -> empty
+Rule 13    fase_light -> fase_food
+Rule 14    fase_light -> fase_toxic
+Rule 15    fase_food -> SAIL TO NOME fase_food
+Rule 16    fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+Rule 17    fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+Rule 18    fase_food -> empty
+Rule 19    fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+Rule 20    fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+Rule 21    fase_toxic -> SAIL TO NOME fase_toxic
+Rule 22    fase_toxic -> empty
+Rule 23    empty -> <empty>
 
 Terminals, with rules where they appear
 
 BEGIN                : 1
 END                  : 1
-FOOD                 : 7 7 15 15
+FOOD                 : 4 4 9 9 17 17
 HEAVY                : 2 2
-KG                   : 2 6 7 8 14 15 17 18
-LIGHT                : 6 6 14 14 18 18
-LOAD                 : 2 6 7 8 14 15 17 18
-NOME                 : 1 2 4 6 7 8 9 13 14 15 17 18 19
+KG                   : 2 3 4 5 8 9 10 16 17 19 20
+LIGHT                : 3 3 8 8 16 16 20 20
+LOAD                 : 2 3 4 5 8 9 10 16 17 19 20
+NOME                 : 1 2 3 4 5 6 8 9 10 11 15 16 17 19 20 21
 PESO_HEAVY           : 2
-PESO_LEVE            : 6 7 8 14 15 17 18
+PESO_LEVE            : 3 4 5 8 9 10 16 17 19 20
 ROUTE                : 1
-SAIL                 : 4 9 13 19
-TO                   : 4 9 13 19
-TOXIC                : 8 8 17 17
-UNLOAD               : 2 6 7 8 14 15 17 18
-WEIGHT               : 2 6 7 8 14 15 17 18
+SAIL                 : 6 11 15 21
+TO                   : 6 11 15 21
+TOXIC                : 5 5 10 10 19 19
+UNLOAD               : 2 3 4 5 8 9 10 16 17 19 20
+WEIGHT               : 2 3 4 5 8 9 10 16 17 19 20
 error                : 
 
 Nonterminals, with rules where they appear
 
-empty                : 5 10 16 20
-fase_food            : 7 11 13 14 14 15 15
-fase_heavy           : 1 2 2 4
-fase_light           : 3 6 6 7 8 9
-fase_toxic           : 8 12 17 17 18 18 19
+empty                : 7 12 18 22
+fase_food            : 4 9 13 15 16 16 17 17
+fase_heavy           : 1 2 2 3 4 5 6
+fase_light           : 3 8 8 9 10 11
+fase_toxic           : 5 10 14 19 19 20 20 21
 s                    : 0
 
 Parsing method: LALR
@@ -89,944 +91,710 @@ state 4
 
     (1) s -> ROUTE NOME BEGIN . fase_heavy END
     (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
-    (3) fase_heavy -> . fase_light
-    (4) fase_heavy -> . SAIL TO NOME fase_heavy
-    (5) fase_heavy -> . empty
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (21) empty -> .
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
+    (3) fase_heavy -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+    (4) fase_heavy -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+    (5) fase_heavy -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
+    (6) fase_heavy -> . SAIL TO NOME fase_heavy
+    (7) fase_heavy -> . empty
+    (23) empty -> .
 
     LOAD            shift and go to state 6
-    SAIL            shift and go to state 8
-    END             reduce using rule 21 (empty -> .)
+    SAIL            shift and go to state 7
+    END             reduce using rule 23 (empty -> .)
 
     fase_heavy                     shift and go to state 5
-    fase_light                     shift and go to state 7
-    empty                          shift and go to state 9
-    fase_food                      shift and go to state 10
-    fase_toxic                     shift and go to state 11
+    empty                          shift and go to state 8
 
 state 5
 
     (1) s -> ROUTE NOME BEGIN fase_heavy . END
 
-    END             shift and go to state 12
+    END             shift and go to state 9
 
 
 state 6
 
     (2) fase_heavy -> LOAD . HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
-    (6) fase_light -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (14) fase_food -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (17) fase_toxic -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (3) fase_heavy -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+    (4) fase_heavy -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+    (5) fase_heavy -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
 
-    HEAVY           shift and go to state 13
-    LIGHT           shift and go to state 14
-    FOOD            shift and go to state 15
-    TOXIC           shift and go to state 16
+    HEAVY           shift and go to state 10
+    LIGHT           shift and go to state 11
+    FOOD            shift and go to state 12
+    TOXIC           shift and go to state 13
 
 
 state 7
 
-    (3) fase_heavy -> fase_light .
+    (6) fase_heavy -> SAIL . TO NOME fase_heavy
 
-    END             reduce using rule 3 (fase_heavy -> fase_light .)
-    UNLOAD          reduce using rule 3 (fase_heavy -> fase_light .)
+    TO              shift and go to state 14
 
 
 state 8
 
-    (4) fase_heavy -> SAIL . TO NOME fase_heavy
-    (9) fase_light -> SAIL . TO NOME fase_light
-    (13) fase_food -> SAIL . TO NOME fase_food
-    (19) fase_toxic -> SAIL . TO NOME fase_toxic
+    (7) fase_heavy -> empty .
 
-    TO              shift and go to state 17
+    END             reduce using rule 7 (fase_heavy -> empty .)
+    UNLOAD          reduce using rule 7 (fase_heavy -> empty .)
 
 
 state 9
-
-    (5) fase_heavy -> empty .
-    (10) fase_light -> empty .
-    (16) fase_food -> empty .
-    (20) fase_toxic -> empty .
-
-  ! reduce/reduce conflict for END resolved using rule 5 (fase_heavy -> empty .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 5 (fase_heavy -> empty .)
-  ! reduce/reduce conflict for END resolved using rule 5 (fase_heavy -> empty .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 5 (fase_heavy -> empty .)
-  ! reduce/reduce conflict for END resolved using rule 5 (fase_heavy -> empty .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 5 (fase_heavy -> empty .)
-    END             reduce using rule 5 (fase_heavy -> empty .)
-    UNLOAD          reduce using rule 5 (fase_heavy -> empty .)
-
-  ! END             [ reduce using rule 10 (fase_light -> empty .) ]
-  ! UNLOAD          [ reduce using rule 10 (fase_light -> empty .) ]
-  ! END             [ reduce using rule 16 (fase_food -> empty .) ]
-  ! UNLOAD          [ reduce using rule 16 (fase_food -> empty .) ]
-  ! END             [ reduce using rule 20 (fase_toxic -> empty .) ]
-  ! UNLOAD          [ reduce using rule 20 (fase_toxic -> empty .) ]
-
-
-state 10
-
-    (11) fase_light -> fase_food .
-
-    END             reduce using rule 11 (fase_light -> fase_food .)
-    UNLOAD          reduce using rule 11 (fase_light -> fase_food .)
-
-
-state 11
-
-    (12) fase_light -> fase_toxic .
-
-    END             reduce using rule 12 (fase_light -> fase_toxic .)
-    UNLOAD          reduce using rule 12 (fase_light -> fase_toxic .)
-
-
-state 12
 
     (1) s -> ROUTE NOME BEGIN fase_heavy END .
 
     $end            reduce using rule 1 (s -> ROUTE NOME BEGIN fase_heavy END .)
 
 
-state 13
+state 10
 
     (2) fase_heavy -> LOAD HEAVY . NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+
+    NOME            shift and go to state 15
+
+
+state 11
+
+    (3) fase_heavy -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+
+    NOME            shift and go to state 16
+
+
+state 12
+
+    (4) fase_heavy -> LOAD FOOD . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+
+    NOME            shift and go to state 17
+
+
+state 13
+
+    (5) fase_heavy -> LOAD TOXIC . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
 
     NOME            shift and go to state 18
 
 
 state 14
 
-    (6) fase_light -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (14) fase_food -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (18) fase_toxic -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (6) fase_heavy -> SAIL TO . NOME fase_heavy
 
     NOME            shift and go to state 19
 
 
 state 15
 
-    (7) fase_light -> LOAD FOOD . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (15) fase_food -> LOAD FOOD . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (2) fase_heavy -> LOAD HEAVY NOME . WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
 
-    NOME            shift and go to state 20
+    WEIGHT          shift and go to state 20
 
 
 state 16
 
-    (8) fase_light -> LOAD TOXIC . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (17) fase_toxic -> LOAD TOXIC . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (3) fase_heavy -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
 
-    NOME            shift and go to state 21
+    WEIGHT          shift and go to state 21
 
 
 state 17
 
-    (4) fase_heavy -> SAIL TO . NOME fase_heavy
-    (9) fase_light -> SAIL TO . NOME fase_light
-    (13) fase_food -> SAIL TO . NOME fase_food
-    (19) fase_toxic -> SAIL TO . NOME fase_toxic
+    (4) fase_heavy -> LOAD FOOD NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
 
-    NOME            shift and go to state 22
+    WEIGHT          shift and go to state 22
 
 
 state 18
 
-    (2) fase_heavy -> LOAD HEAVY NOME . WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+    (5) fase_heavy -> LOAD TOXIC NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
 
     WEIGHT          shift and go to state 23
 
 
 state 19
 
-    (6) fase_light -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (14) fase_food -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (18) fase_toxic -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (6) fase_heavy -> SAIL TO NOME . fase_heavy
+    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+    (3) fase_heavy -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+    (4) fase_heavy -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+    (5) fase_heavy -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
+    (6) fase_heavy -> . SAIL TO NOME fase_heavy
+    (7) fase_heavy -> . empty
+    (23) empty -> .
 
-    WEIGHT          shift and go to state 24
+    LOAD            shift and go to state 6
+    SAIL            shift and go to state 7
+    END             reduce using rule 23 (empty -> .)
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_heavy                     shift and go to state 24
+    empty                          shift and go to state 8
 
 state 20
 
-    (7) fase_light -> LOAD FOOD NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (15) fase_food -> LOAD FOOD NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT . PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
 
-    WEIGHT          shift and go to state 25
+    PESO_HEAVY      shift and go to state 25
 
 
 state 21
 
-    (8) fase_light -> LOAD TOXIC NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (17) fase_toxic -> LOAD TOXIC NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (3) fase_heavy -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
 
-    WEIGHT          shift and go to state 26
+    PESO_LEVE       shift and go to state 26
 
 
 state 22
 
-    (4) fase_heavy -> SAIL TO NOME . fase_heavy
-    (9) fase_light -> SAIL TO NOME . fase_light
-    (13) fase_food -> SAIL TO NOME . fase_food
-    (19) fase_toxic -> SAIL TO NOME . fase_toxic
-    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
-    (3) fase_heavy -> . fase_light
-    (4) fase_heavy -> . SAIL TO NOME fase_heavy
-    (5) fase_heavy -> . empty
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
+    (4) fase_heavy -> LOAD FOOD NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
 
-    LOAD            shift and go to state 6
-    SAIL            shift and go to state 8
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
+    PESO_LEVE       shift and go to state 27
 
-    fase_heavy                     shift and go to state 27
-    fase_light                     shift and go to state 28
-    fase_food                      shift and go to state 29
-    fase_toxic                     shift and go to state 30
-    empty                          shift and go to state 9
 
 state 23
 
-    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT . PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+    (5) fase_heavy -> LOAD TOXIC NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
 
-    PESO_HEAVY      shift and go to state 31
+    PESO_LEVE       shift and go to state 28
 
 
 state 24
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (6) fase_heavy -> SAIL TO NOME fase_heavy .
 
-    PESO_LEVE       shift and go to state 32
+    END             reduce using rule 6 (fase_heavy -> SAIL TO NOME fase_heavy .)
+    UNLOAD          reduce using rule 6 (fase_heavy -> SAIL TO NOME fase_heavy .)
 
 
 state 25
 
-    (7) fase_light -> LOAD FOOD NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (15) fase_food -> LOAD FOOD NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY . KG fase_heavy UNLOAD HEAVY fase_heavy
 
-    PESO_LEVE       shift and go to state 33
+    KG              shift and go to state 29
 
 
 state 26
 
-    (8) fase_light -> LOAD TOXIC NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (3) fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_light UNLOAD LIGHT fase_heavy
 
-    PESO_LEVE       shift and go to state 34
+    KG              shift and go to state 30
 
 
 state 27
 
-    (4) fase_heavy -> SAIL TO NOME fase_heavy .
+    (4) fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD FOOD fase_heavy
 
-    END             reduce using rule 4 (fase_heavy -> SAIL TO NOME fase_heavy .)
-    UNLOAD          reduce using rule 4 (fase_heavy -> SAIL TO NOME fase_heavy .)
+    KG              shift and go to state 31
 
 
 state 28
 
-    (9) fase_light -> SAIL TO NOME fase_light .
-    (3) fase_heavy -> fase_light .
+    (5) fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD TOXIC fase_heavy
 
-  ! reduce/reduce conflict for END resolved using rule 3 (fase_heavy -> fase_light .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 3 (fase_heavy -> fase_light .)
-    END             reduce using rule 3 (fase_heavy -> fase_light .)
-    UNLOAD          reduce using rule 3 (fase_heavy -> fase_light .)
-
-  ! END             [ reduce using rule 9 (fase_light -> SAIL TO NOME fase_light .) ]
-  ! UNLOAD          [ reduce using rule 9 (fase_light -> SAIL TO NOME fase_light .) ]
+    KG              shift and go to state 32
 
 
 state 29
 
-    (13) fase_food -> SAIL TO NOME fase_food .
-    (11) fase_light -> fase_food .
+    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG . fase_heavy UNLOAD HEAVY fase_heavy
+    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+    (3) fase_heavy -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+    (4) fase_heavy -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+    (5) fase_heavy -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
+    (6) fase_heavy -> . SAIL TO NOME fase_heavy
+    (7) fase_heavy -> . empty
+    (23) empty -> .
 
-  ! reduce/reduce conflict for END resolved using rule 11 (fase_light -> fase_food .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 11 (fase_light -> fase_food .)
-    END             reduce using rule 11 (fase_light -> fase_food .)
-    UNLOAD          reduce using rule 11 (fase_light -> fase_food .)
+    LOAD            shift and go to state 6
+    SAIL            shift and go to state 7
+    UNLOAD          reduce using rule 23 (empty -> .)
 
-  ! END             [ reduce using rule 13 (fase_food -> SAIL TO NOME fase_food .) ]
-  ! UNLOAD          [ reduce using rule 13 (fase_food -> SAIL TO NOME fase_food .) ]
-
+    fase_heavy                     shift and go to state 33
+    empty                          shift and go to state 8
 
 state 30
 
-    (19) fase_toxic -> SAIL TO NOME fase_toxic .
-    (12) fase_light -> fase_toxic .
+    (3) fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_light UNLOAD LIGHT fase_heavy
+    (8) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (11) fase_light -> . SAIL TO NOME fase_light
+    (12) fase_light -> . empty
+    (13) fase_light -> . fase_food
+    (14) fase_light -> . fase_toxic
+    (23) empty -> .
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
 
-  ! reduce/reduce conflict for END resolved using rule 12 (fase_light -> fase_toxic .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 12 (fase_light -> fase_toxic .)
-    END             reduce using rule 12 (fase_light -> fase_toxic .)
-    UNLOAD          reduce using rule 12 (fase_light -> fase_toxic .)
+    LOAD            shift and go to state 34
+    SAIL            shift and go to state 38
+    UNLOAD          reduce using rule 23 (empty -> .)
 
-  ! END             [ reduce using rule 19 (fase_toxic -> SAIL TO NOME fase_toxic .) ]
-  ! UNLOAD          [ reduce using rule 19 (fase_toxic -> SAIL TO NOME fase_toxic .) ]
-
+    fase_light                     shift and go to state 35
+    fase_food                      shift and go to state 36
+    fase_toxic                     shift and go to state 37
+    empty                          shift and go to state 39
 
 state 31
 
-    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY . KG fase_heavy UNLOAD HEAVY fase_heavy
+    (4) fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD FOOD fase_heavy
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
 
-    KG              shift and go to state 35
+    SAIL            shift and go to state 42
+    LOAD            shift and go to state 40
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_food                      shift and go to state 41
+    empty                          shift and go to state 43
 
 state 32
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_light UNLOAD LIGHT fase_light
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD LIGHT fase_food
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD LIGHT fase_toxic
+    (5) fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD TOXIC fase_heavy
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
 
-    KG              shift and go to state 36
+    LOAD            shift and go to state 44
+    SAIL            shift and go to state 46
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_toxic                     shift and go to state 45
+    empty                          shift and go to state 47
 
 state 33
 
-    (7) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD FOOD fase_light
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD FOOD fase_food
+    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy . UNLOAD HEAVY fase_heavy
 
-    KG              shift and go to state 37
+    UNLOAD          shift and go to state 48
 
 
 state 34
 
-    (8) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD TOXIC fase_light
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD TOXIC fase_toxic
+    (8) fase_light -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (16) fase_food -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (19) fase_toxic -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
 
-    KG              shift and go to state 38
+    LIGHT           shift and go to state 49
+    FOOD            shift and go to state 50
+    TOXIC           shift and go to state 51
 
 
 state 35
 
-    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG . fase_heavy UNLOAD HEAVY fase_heavy
-    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
-    (3) fase_heavy -> . fase_light
-    (4) fase_heavy -> . SAIL TO NOME fase_heavy
-    (5) fase_heavy -> . empty
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (21) empty -> .
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
+    (3) fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light . UNLOAD LIGHT fase_heavy
 
-    LOAD            shift and go to state 6
-    SAIL            shift and go to state 8
-    UNLOAD          reduce using rule 21 (empty -> .)
+    UNLOAD          shift and go to state 52
 
-    fase_heavy                     shift and go to state 39
-    fase_light                     shift and go to state 7
-    empty                          shift and go to state 9
-    fase_food                      shift and go to state 10
-    fase_toxic                     shift and go to state 11
 
 state 36
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_light UNLOAD LIGHT fase_light
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD LIGHT fase_food
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD LIGHT fase_toxic
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
+    (13) fase_light -> fase_food .
 
-    LOAD            shift and go to state 40
-    SAIL            shift and go to state 44
-    UNLOAD          reduce using rule 21 (empty -> .)
+    UNLOAD          reduce using rule 13 (fase_light -> fase_food .)
 
-    fase_light                     shift and go to state 41
-    fase_food                      shift and go to state 42
-    fase_toxic                     shift and go to state 43
-    empty                          shift and go to state 45
 
 state 37
 
-    (7) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD FOOD fase_light
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD FOOD fase_food
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
+    (14) fase_light -> fase_toxic .
 
-    SAIL            shift and go to state 48
-    LOAD            shift and go to state 46
-    UNLOAD          reduce using rule 21 (empty -> .)
+    UNLOAD          reduce using rule 14 (fase_light -> fase_toxic .)
 
-    fase_food                      shift and go to state 47
-    empty                          shift and go to state 49
 
 state 38
 
-    (8) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD TOXIC fase_light
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD TOXIC fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
+    (11) fase_light -> SAIL . TO NOME fase_light
+    (15) fase_food -> SAIL . TO NOME fase_food
+    (21) fase_toxic -> SAIL . TO NOME fase_toxic
 
-    LOAD            shift and go to state 50
-    SAIL            shift and go to state 52
-    UNLOAD          reduce using rule 21 (empty -> .)
+    TO              shift and go to state 53
 
-    fase_toxic                     shift and go to state 51
-    empty                          shift and go to state 53
 
 state 39
 
-    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy . UNLOAD HEAVY fase_heavy
+    (12) fase_light -> empty .
+    (18) fase_food -> empty .
+    (22) fase_toxic -> empty .
 
-    UNLOAD          shift and go to state 54
+  ! reduce/reduce conflict for UNLOAD resolved using rule 12 (fase_light -> empty .)
+  ! reduce/reduce conflict for UNLOAD resolved using rule 12 (fase_light -> empty .)
+    UNLOAD          reduce using rule 12 (fase_light -> empty .)
+
+  ! UNLOAD          [ reduce using rule 18 (fase_food -> empty .) ]
+  ! UNLOAD          [ reduce using rule 22 (fase_toxic -> empty .) ]
 
 
 state 40
 
-    (6) fase_light -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (14) fase_food -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (17) fase_toxic -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (16) fase_food -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
 
-    LIGHT           shift and go to state 14
-    FOOD            shift and go to state 15
-    TOXIC           shift and go to state 16
+    LIGHT           shift and go to state 54
+    FOOD            shift and go to state 55
 
 
 state 41
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light . UNLOAD LIGHT fase_light
+    (4) fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD FOOD fase_heavy
 
-    UNLOAD          shift and go to state 55
+    UNLOAD          shift and go to state 56
 
 
 state 42
 
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD LIGHT fase_food
-    (11) fase_light -> fase_food .
+    (15) fase_food -> SAIL . TO NOME fase_food
 
-  ! shift/reduce conflict for UNLOAD resolved as shift
-    UNLOAD          shift and go to state 56
-
-  ! UNLOAD          [ reduce using rule 11 (fase_light -> fase_food .) ]
+    TO              shift and go to state 57
 
 
 state 43
 
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD LIGHT fase_toxic
-    (12) fase_light -> fase_toxic .
+    (18) fase_food -> empty .
 
-  ! shift/reduce conflict for UNLOAD resolved as shift
-    UNLOAD          shift and go to state 57
-
-  ! UNLOAD          [ reduce using rule 12 (fase_light -> fase_toxic .) ]
+    UNLOAD          reduce using rule 18 (fase_food -> empty .)
 
 
 state 44
 
-    (9) fase_light -> SAIL . TO NOME fase_light
-    (13) fase_food -> SAIL . TO NOME fase_food
-    (19) fase_toxic -> SAIL . TO NOME fase_toxic
+    (19) fase_toxic -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
 
-    TO              shift and go to state 58
+    TOXIC           shift and go to state 58
+    LIGHT           shift and go to state 59
 
 
 state 45
 
-    (10) fase_light -> empty .
-    (16) fase_food -> empty .
-    (20) fase_toxic -> empty .
+    (5) fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD TOXIC fase_heavy
 
-  ! reduce/reduce conflict for UNLOAD resolved using rule 10 (fase_light -> empty .)
-  ! reduce/reduce conflict for END resolved using rule 10 (fase_light -> empty .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 10 (fase_light -> empty .)
-  ! reduce/reduce conflict for END resolved using rule 10 (fase_light -> empty .)
-    UNLOAD          reduce using rule 10 (fase_light -> empty .)
-    END             reduce using rule 10 (fase_light -> empty .)
-
-  ! UNLOAD          [ reduce using rule 16 (fase_food -> empty .) ]
-  ! END             [ reduce using rule 16 (fase_food -> empty .) ]
-  ! UNLOAD          [ reduce using rule 20 (fase_toxic -> empty .) ]
-  ! END             [ reduce using rule 20 (fase_toxic -> empty .) ]
+    UNLOAD          shift and go to state 60
 
 
 state 46
 
-    (14) fase_food -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (21) fase_toxic -> SAIL . TO NOME fase_toxic
 
-    LIGHT           shift and go to state 59
-    FOOD            shift and go to state 60
+    TO              shift and go to state 61
 
 
 state 47
 
-    (7) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD FOOD fase_light
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD FOOD fase_food
+    (22) fase_toxic -> empty .
 
-    UNLOAD          shift and go to state 61
+    UNLOAD          reduce using rule 22 (fase_toxic -> empty .)
 
 
 state 48
 
-    (13) fase_food -> SAIL . TO NOME fase_food
+    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD . HEAVY fase_heavy
 
-    TO              shift and go to state 62
+    HEAVY           shift and go to state 62
 
 
 state 49
 
-    (16) fase_food -> empty .
+    (8) fase_light -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (16) fase_food -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (20) fase_toxic -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
 
-    UNLOAD          reduce using rule 16 (fase_food -> empty .)
-    END             reduce using rule 16 (fase_food -> empty .)
+    NOME            shift and go to state 63
 
 
 state 50
 
-    (17) fase_toxic -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (9) fase_light -> LOAD FOOD . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (17) fase_food -> LOAD FOOD . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
 
-    TOXIC           shift and go to state 63
-    LIGHT           shift and go to state 64
+    NOME            shift and go to state 64
 
 
 state 51
 
-    (8) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD TOXIC fase_light
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD TOXIC fase_toxic
+    (10) fase_light -> LOAD TOXIC . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (19) fase_toxic -> LOAD TOXIC . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
 
-    UNLOAD          shift and go to state 65
+    NOME            shift and go to state 65
 
 
 state 52
 
-    (19) fase_toxic -> SAIL . TO NOME fase_toxic
+    (3) fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD . LIGHT fase_heavy
 
-    TO              shift and go to state 66
+    LIGHT           shift and go to state 66
 
 
 state 53
 
-    (20) fase_toxic -> empty .
+    (11) fase_light -> SAIL TO . NOME fase_light
+    (15) fase_food -> SAIL TO . NOME fase_food
+    (21) fase_toxic -> SAIL TO . NOME fase_toxic
 
-    UNLOAD          reduce using rule 20 (fase_toxic -> empty .)
-    END             reduce using rule 20 (fase_toxic -> empty .)
+    NOME            shift and go to state 67
 
 
 state 54
 
-    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD . HEAVY fase_heavy
+    (16) fase_food -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
 
-    HEAVY           shift and go to state 67
+    NOME            shift and go to state 68
 
 
 state 55
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD . LIGHT fase_light
+    (17) fase_food -> LOAD FOOD . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
 
-    LIGHT           shift and go to state 68
+    NOME            shift and go to state 69
 
 
 state 56
 
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . LIGHT fase_food
+    (4) fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . FOOD fase_heavy
 
-    LIGHT           shift and go to state 69
+    FOOD            shift and go to state 70
 
 
 state 57
 
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . LIGHT fase_toxic
-
-    LIGHT           shift and go to state 70
-
-
-state 58
-
-    (9) fase_light -> SAIL TO . NOME fase_light
-    (13) fase_food -> SAIL TO . NOME fase_food
-    (19) fase_toxic -> SAIL TO . NOME fase_toxic
+    (15) fase_food -> SAIL TO . NOME fase_food
 
     NOME            shift and go to state 71
 
 
-state 59
+state 58
 
-    (14) fase_food -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (19) fase_toxic -> LOAD TOXIC . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
 
     NOME            shift and go to state 72
 
 
-state 60
+state 59
 
-    (15) fase_food -> LOAD FOOD . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (20) fase_toxic -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
 
     NOME            shift and go to state 73
 
 
+state 60
+
+    (5) fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . TOXIC fase_heavy
+
+    TOXIC           shift and go to state 74
+
+
 state 61
 
-    (7) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . FOOD fase_light
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . FOOD fase_food
-
-    FOOD            shift and go to state 74
-
-
-state 62
-
-    (13) fase_food -> SAIL TO . NOME fase_food
+    (21) fase_toxic -> SAIL TO . NOME fase_toxic
 
     NOME            shift and go to state 75
 
 
+state 62
+
+    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY . fase_heavy
+    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+    (3) fase_heavy -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+    (4) fase_heavy -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+    (5) fase_heavy -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
+    (6) fase_heavy -> . SAIL TO NOME fase_heavy
+    (7) fase_heavy -> . empty
+    (23) empty -> .
+
+    LOAD            shift and go to state 6
+    SAIL            shift and go to state 7
+    END             reduce using rule 23 (empty -> .)
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_heavy                     shift and go to state 76
+    empty                          shift and go to state 8
+
 state 63
 
-    (17) fase_toxic -> LOAD TOXIC . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (8) fase_light -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (16) fase_food -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (20) fase_toxic -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
 
-    NOME            shift and go to state 76
+    WEIGHT          shift and go to state 77
 
 
 state 64
 
-    (18) fase_toxic -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (9) fase_light -> LOAD FOOD NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (17) fase_food -> LOAD FOOD NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
 
-    NOME            shift and go to state 77
+    WEIGHT          shift and go to state 78
 
 
 state 65
 
-    (8) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . TOXIC fase_light
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . TOXIC fase_toxic
+    (10) fase_light -> LOAD TOXIC NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (19) fase_toxic -> LOAD TOXIC NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
 
-    TOXIC           shift and go to state 78
+    WEIGHT          shift and go to state 79
 
 
 state 66
 
-    (19) fase_toxic -> SAIL TO . NOME fase_toxic
+    (3) fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT . fase_heavy
+    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+    (3) fase_heavy -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+    (4) fase_heavy -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+    (5) fase_heavy -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
+    (6) fase_heavy -> . SAIL TO NOME fase_heavy
+    (7) fase_heavy -> . empty
+    (23) empty -> .
 
-    NOME            shift and go to state 79
+    LOAD            shift and go to state 6
+    SAIL            shift and go to state 7
+    END             reduce using rule 23 (empty -> .)
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_heavy                     shift and go to state 80
+    empty                          shift and go to state 8
 
 state 67
 
-    (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY . fase_heavy
-    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
-    (3) fase_heavy -> . fase_light
-    (4) fase_heavy -> . SAIL TO NOME fase_heavy
-    (5) fase_heavy -> . empty
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (21) empty -> .
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
+    (11) fase_light -> SAIL TO NOME . fase_light
+    (15) fase_food -> SAIL TO NOME . fase_food
+    (21) fase_toxic -> SAIL TO NOME . fase_toxic
+    (8) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (11) fase_light -> . SAIL TO NOME fase_light
+    (12) fase_light -> . empty
+    (13) fase_light -> . fase_food
+    (14) fase_light -> . fase_toxic
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
 
-    LOAD            shift and go to state 6
-    SAIL            shift and go to state 8
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
+    LOAD            shift and go to state 34
+    SAIL            shift and go to state 38
+    UNLOAD          reduce using rule 23 (empty -> .)
 
-    fase_heavy                     shift and go to state 80
-    fase_light                     shift and go to state 7
-    empty                          shift and go to state 9
-    fase_food                      shift and go to state 10
-    fase_toxic                     shift and go to state 11
+    fase_light                     shift and go to state 81
+    fase_food                      shift and go to state 82
+    fase_toxic                     shift and go to state 83
+    empty                          shift and go to state 39
 
 state 68
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT . fase_light
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (21) empty -> .
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
+    (16) fase_food -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
 
-    LOAD            shift and go to state 40
-    SAIL            shift and go to state 44
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
+    WEIGHT          shift and go to state 84
 
-    fase_light                     shift and go to state 81
-    fase_food                      shift and go to state 10
-    fase_toxic                     shift and go to state 11
-    empty                          shift and go to state 45
 
 state 69
 
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT . fase_food
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
-
-    SAIL            shift and go to state 48
-    LOAD            shift and go to state 46
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
-
-    fase_food                      shift and go to state 82
-    empty                          shift and go to state 49
-
-state 70
-
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT . fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
-
-    LOAD            shift and go to state 50
-    SAIL            shift and go to state 52
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
-
-    fase_toxic                     shift and go to state 83
-    empty                          shift and go to state 53
-
-state 71
-
-    (9) fase_light -> SAIL TO NOME . fase_light
-    (13) fase_food -> SAIL TO NOME . fase_food
-    (19) fase_toxic -> SAIL TO NOME . fase_toxic
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
-
-    LOAD            shift and go to state 40
-    SAIL            shift and go to state 44
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
-
-    fase_light                     shift and go to state 84
-    fase_food                      shift and go to state 29
-    fase_toxic                     shift and go to state 30
-    empty                          shift and go to state 45
-
-state 72
-
-    (14) fase_food -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> LOAD FOOD NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
 
     WEIGHT          shift and go to state 85
 
 
+state 70
+
+    (4) fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD . fase_heavy
+    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+    (3) fase_heavy -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+    (4) fase_heavy -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+    (5) fase_heavy -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
+    (6) fase_heavy -> . SAIL TO NOME fase_heavy
+    (7) fase_heavy -> . empty
+    (23) empty -> .
+
+    LOAD            shift and go to state 6
+    SAIL            shift and go to state 7
+    END             reduce using rule 23 (empty -> .)
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_heavy                     shift and go to state 86
+    empty                          shift and go to state 8
+
+state 71
+
+    (15) fase_food -> SAIL TO NOME . fase_food
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
+
+    SAIL            shift and go to state 42
+    LOAD            shift and go to state 40
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_food                      shift and go to state 87
+    empty                          shift and go to state 43
+
+state 72
+
+    (19) fase_toxic -> LOAD TOXIC NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+
+    WEIGHT          shift and go to state 88
+
+
 state 73
 
-    (15) fase_food -> LOAD FOOD NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (20) fase_toxic -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
 
-    WEIGHT          shift and go to state 86
+    WEIGHT          shift and go to state 89
 
 
 state 74
 
-    (7) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD . fase_light
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD . fase_food
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
+    (5) fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC . fase_heavy
+    (2) fase_heavy -> . LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy
+    (3) fase_heavy -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy
+    (4) fase_heavy -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy
+    (5) fase_heavy -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy
+    (6) fase_heavy -> . SAIL TO NOME fase_heavy
+    (7) fase_heavy -> . empty
+    (23) empty -> .
 
-    LOAD            shift and go to state 40
-    SAIL            shift and go to state 44
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
+    LOAD            shift and go to state 6
+    SAIL            shift and go to state 7
+    END             reduce using rule 23 (empty -> .)
+    UNLOAD          reduce using rule 23 (empty -> .)
 
-    fase_food                      shift and go to state 87
-    fase_light                     shift and go to state 88
-    fase_toxic                     shift and go to state 11
-    empty                          shift and go to state 45
+    fase_heavy                     shift and go to state 90
+    empty                          shift and go to state 8
 
 state 75
 
-    (13) fase_food -> SAIL TO NOME . fase_food
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
+    (21) fase_toxic -> SAIL TO NOME . fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
 
-    SAIL            shift and go to state 48
-    LOAD            shift and go to state 46
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
+    LOAD            shift and go to state 44
+    SAIL            shift and go to state 46
+    UNLOAD          reduce using rule 23 (empty -> .)
 
-    fase_food                      shift and go to state 89
-    empty                          shift and go to state 49
+    fase_toxic                     shift and go to state 91
+    empty                          shift and go to state 47
 
 state 76
-
-    (17) fase_toxic -> LOAD TOXIC NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-
-    WEIGHT          shift and go to state 90
-
-
-state 77
-
-    (18) fase_toxic -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-
-    WEIGHT          shift and go to state 91
-
-
-state 78
-
-    (8) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC . fase_light
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC . fase_toxic
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-
-    LOAD            shift and go to state 92
-    SAIL            shift and go to state 95
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
-
-    fase_toxic                     shift and go to state 93
-    fase_light                     shift and go to state 94
-    fase_food                      shift and go to state 10
-    empty                          shift and go to state 96
-
-state 79
-
-    (19) fase_toxic -> SAIL TO NOME . fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
-
-    LOAD            shift and go to state 50
-    SAIL            shift and go to state 52
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
-
-    fase_toxic                     shift and go to state 97
-    empty                          shift and go to state 53
-
-state 80
 
     (2) fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy .
 
@@ -1034,486 +802,818 @@ state 80
     UNLOAD          reduce using rule 2 (fase_heavy -> LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy .)
 
 
+state 77
+
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+
+    PESO_LEVE       shift and go to state 92
+
+
+state 78
+
+    (9) fase_light -> LOAD FOOD NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (17) fase_food -> LOAD FOOD NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+
+    PESO_LEVE       shift and go to state 93
+
+
+state 79
+
+    (10) fase_light -> LOAD TOXIC NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+
+    PESO_LEVE       shift and go to state 94
+
+
+state 80
+
+    (3) fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy .
+
+    END             reduce using rule 3 (fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy .)
+    UNLOAD          reduce using rule 3 (fase_heavy -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy .)
+
+
 state 81
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light .
+    (11) fase_light -> SAIL TO NOME fase_light .
 
-    END             reduce using rule 6 (fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light .)
-    UNLOAD          reduce using rule 6 (fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light .)
+    UNLOAD          reduce using rule 11 (fase_light -> SAIL TO NOME fase_light .)
 
 
 state 82
 
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food .
+    (15) fase_food -> SAIL TO NOME fase_food .
+    (13) fase_light -> fase_food .
 
-    END             reduce using rule 14 (fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food .)
-    UNLOAD          reduce using rule 14 (fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food .)
+  ! reduce/reduce conflict for UNLOAD resolved using rule 13 (fase_light -> fase_food .)
+    UNLOAD          reduce using rule 13 (fase_light -> fase_food .)
+
+  ! UNLOAD          [ reduce using rule 15 (fase_food -> SAIL TO NOME fase_food .) ]
 
 
 state 83
 
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic .
+    (21) fase_toxic -> SAIL TO NOME fase_toxic .
+    (14) fase_light -> fase_toxic .
 
-    END             reduce using rule 18 (fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic .)
-    UNLOAD          reduce using rule 18 (fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic .)
+  ! reduce/reduce conflict for UNLOAD resolved using rule 14 (fase_light -> fase_toxic .)
+    UNLOAD          reduce using rule 14 (fase_light -> fase_toxic .)
+
+  ! UNLOAD          [ reduce using rule 21 (fase_toxic -> SAIL TO NOME fase_toxic .) ]
 
 
 state 84
 
-    (9) fase_light -> SAIL TO NOME fase_light .
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
 
-    UNLOAD          reduce using rule 9 (fase_light -> SAIL TO NOME fase_light .)
-    END             reduce using rule 9 (fase_light -> SAIL TO NOME fase_light .)
+    PESO_LEVE       shift and go to state 95
 
 
 state 85
 
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> LOAD FOOD NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD FOOD fase_food
 
-    PESO_LEVE       shift and go to state 98
+    PESO_LEVE       shift and go to state 96
 
 
 state 86
 
-    (15) fase_food -> LOAD FOOD NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (4) fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy .
 
-    PESO_LEVE       shift and go to state 99
+    END             reduce using rule 4 (fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy .)
+    UNLOAD          reduce using rule 4 (fase_heavy -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy .)
 
 
 state 87
 
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .
-    (11) fase_light -> fase_food .
+    (15) fase_food -> SAIL TO NOME fase_food .
 
-  ! reduce/reduce conflict for END resolved using rule 11 (fase_light -> fase_food .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 11 (fase_light -> fase_food .)
-    END             reduce using rule 11 (fase_light -> fase_food .)
-    UNLOAD          reduce using rule 11 (fase_light -> fase_food .)
-
-  ! END             [ reduce using rule 15 (fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .) ]
-  ! UNLOAD          [ reduce using rule 15 (fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .) ]
+    UNLOAD          reduce using rule 15 (fase_food -> SAIL TO NOME fase_food .)
 
 
 state 88
 
-    (7) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light .
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
 
-    END             reduce using rule 7 (fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light .)
-    UNLOAD          reduce using rule 7 (fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light .)
+    PESO_LEVE       shift and go to state 97
 
 
 state 89
 
-    (13) fase_food -> SAIL TO NOME fase_food .
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
 
-    UNLOAD          reduce using rule 13 (fase_food -> SAIL TO NOME fase_food .)
-    END             reduce using rule 13 (fase_food -> SAIL TO NOME fase_food .)
+    PESO_LEVE       shift and go to state 98
 
 
 state 90
 
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (5) fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy .
 
-    PESO_LEVE       shift and go to state 100
+    END             reduce using rule 5 (fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy .)
+    UNLOAD          reduce using rule 5 (fase_heavy -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy .)
 
 
 state 91
 
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> SAIL TO NOME fase_toxic .
 
-    PESO_LEVE       shift and go to state 101
+    UNLOAD          reduce using rule 21 (fase_toxic -> SAIL TO NOME fase_toxic .)
 
 
 state 92
 
-    (6) fase_light -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (17) fase_toxic -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (14) fase_food -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_light UNLOAD LIGHT fase_light
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD LIGHT fase_food
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD LIGHT fase_toxic
 
-    LIGHT           shift and go to state 102
-    FOOD            shift and go to state 15
-    TOXIC           shift and go to state 16
+    KG              shift and go to state 99
 
 
 state 93
 
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .
-    (12) fase_light -> fase_toxic .
+    (9) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD FOOD fase_light
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD FOOD fase_food
 
-  ! reduce/reduce conflict for END resolved using rule 12 (fase_light -> fase_toxic .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 12 (fase_light -> fase_toxic .)
-    END             reduce using rule 12 (fase_light -> fase_toxic .)
-    UNLOAD          reduce using rule 12 (fase_light -> fase_toxic .)
-
-  ! END             [ reduce using rule 17 (fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .) ]
-  ! UNLOAD          [ reduce using rule 17 (fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .) ]
+    KG              shift and go to state 100
 
 
 state 94
 
-    (8) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light .
+    (10) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD TOXIC fase_light
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD TOXIC fase_toxic
 
-    END             reduce using rule 8 (fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light .)
-    UNLOAD          reduce using rule 8 (fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light .)
+    KG              shift and go to state 101
 
 
 state 95
 
-    (9) fase_light -> SAIL . TO NOME fase_light
-    (19) fase_toxic -> SAIL . TO NOME fase_toxic
-    (13) fase_food -> SAIL . TO NOME fase_food
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD LIGHT fase_food
 
-    TO              shift and go to state 103
+    KG              shift and go to state 102
 
 
 state 96
 
-    (10) fase_light -> empty .
-    (20) fase_toxic -> empty .
-    (16) fase_food -> empty .
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD FOOD fase_food
 
-  ! reduce/reduce conflict for END resolved using rule 10 (fase_light -> empty .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 10 (fase_light -> empty .)
-  ! reduce/reduce conflict for END resolved using rule 10 (fase_light -> empty .)
-  ! reduce/reduce conflict for UNLOAD resolved using rule 10 (fase_light -> empty .)
-    END             reduce using rule 10 (fase_light -> empty .)
-    UNLOAD          reduce using rule 10 (fase_light -> empty .)
-
-  ! END             [ reduce using rule 20 (fase_toxic -> empty .) ]
-  ! UNLOAD          [ reduce using rule 20 (fase_toxic -> empty .) ]
-  ! END             [ reduce using rule 16 (fase_food -> empty .) ]
-  ! UNLOAD          [ reduce using rule 16 (fase_food -> empty .) ]
+    KG              shift and go to state 103
 
 
 state 97
 
-    (19) fase_toxic -> SAIL TO NOME fase_toxic .
-
-    UNLOAD          reduce using rule 19 (fase_toxic -> SAIL TO NOME fase_toxic .)
-    END             reduce using rule 19 (fase_toxic -> SAIL TO NOME fase_toxic .)
-
-
-state 98
-
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD LIGHT fase_food
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD TOXIC fase_toxic
 
     KG              shift and go to state 104
 
 
-state 99
+state 98
 
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD FOOD fase_food
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD LIGHT fase_toxic
 
     KG              shift and go to state 105
 
 
+state 99
+
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_light UNLOAD LIGHT fase_light
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD LIGHT fase_food
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD LIGHT fase_toxic
+    (8) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (11) fase_light -> . SAIL TO NOME fase_light
+    (12) fase_light -> . empty
+    (13) fase_light -> . fase_food
+    (14) fase_light -> . fase_toxic
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
+
+    LOAD            shift and go to state 34
+    SAIL            shift and go to state 38
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_light                     shift and go to state 106
+    fase_food                      shift and go to state 107
+    fase_toxic                     shift and go to state 108
+    empty                          shift and go to state 39
+
 state 100
 
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD TOXIC fase_toxic
+    (9) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD FOOD fase_light
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD FOOD fase_food
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
 
-    KG              shift and go to state 106
+    SAIL            shift and go to state 42
+    LOAD            shift and go to state 40
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_food                      shift and go to state 109
+    empty                          shift and go to state 43
 
 state 101
 
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD LIGHT fase_toxic
+    (10) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD TOXIC fase_light
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD TOXIC fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
 
-    KG              shift and go to state 107
+    LOAD            shift and go to state 44
+    SAIL            shift and go to state 46
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_toxic                     shift and go to state 110
+    empty                          shift and go to state 47
 
 state 102
 
-    (6) fase_light -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (18) fase_toxic -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (14) fase_food -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD LIGHT fase_food
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
 
-    NOME            shift and go to state 108
+    SAIL            shift and go to state 42
+    LOAD            shift and go to state 40
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_food                      shift and go to state 111
+    empty                          shift and go to state 43
 
 state 103
 
-    (9) fase_light -> SAIL TO . NOME fase_light
-    (19) fase_toxic -> SAIL TO . NOME fase_toxic
-    (13) fase_food -> SAIL TO . NOME fase_food
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD FOOD fase_food
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
 
-    NOME            shift and go to state 109
+    SAIL            shift and go to state 42
+    LOAD            shift and go to state 40
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_food                      shift and go to state 112
+    empty                          shift and go to state 43
 
 state 104
 
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD LIGHT fase_food
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD TOXIC fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
 
-    SAIL            shift and go to state 48
-    LOAD            shift and go to state 46
-    UNLOAD          reduce using rule 21 (empty -> .)
+    LOAD            shift and go to state 44
+    SAIL            shift and go to state 46
+    UNLOAD          reduce using rule 23 (empty -> .)
 
-    fase_food                      shift and go to state 110
-    empty                          shift and go to state 49
+    fase_toxic                     shift and go to state 113
+    empty                          shift and go to state 47
 
 state 105
 
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD FOOD fase_food
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD LIGHT fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
 
-    SAIL            shift and go to state 48
-    LOAD            shift and go to state 46
-    UNLOAD          reduce using rule 21 (empty -> .)
+    LOAD            shift and go to state 44
+    SAIL            shift and go to state 46
+    UNLOAD          reduce using rule 23 (empty -> .)
 
-    fase_food                      shift and go to state 111
-    empty                          shift and go to state 49
+    fase_toxic                     shift and go to state 114
+    empty                          shift and go to state 47
 
 state 106
 
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD TOXIC fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
-
-    LOAD            shift and go to state 50
-    SAIL            shift and go to state 52
-    UNLOAD          reduce using rule 21 (empty -> .)
-
-    fase_toxic                     shift and go to state 112
-    empty                          shift and go to state 53
-
-state 107
-
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD LIGHT fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
-
-    LOAD            shift and go to state 50
-    SAIL            shift and go to state 52
-    UNLOAD          reduce using rule 21 (empty -> .)
-
-    fase_toxic                     shift and go to state 113
-    empty                          shift and go to state 53
-
-state 108
-
-    (6) fase_light -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (18) fase_toxic -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (14) fase_food -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-
-    WEIGHT          shift and go to state 114
-
-
-state 109
-
-    (9) fase_light -> SAIL TO NOME . fase_light
-    (19) fase_toxic -> SAIL TO NOME . fase_toxic
-    (13) fase_food -> SAIL TO NOME . fase_food
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
-
-    LOAD            shift and go to state 92
-    SAIL            shift and go to state 95
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
-
-    fase_light                     shift and go to state 84
-    fase_toxic                     shift and go to state 30
-    fase_food                      shift and go to state 29
-    empty                          shift and go to state 96
-
-state 110
-
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD LIGHT fase_food
-
-    UNLOAD          shift and go to state 56
-
-
-state 111
-
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD FOOD fase_food
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light . UNLOAD LIGHT fase_light
 
     UNLOAD          shift and go to state 115
 
 
-state 112
+state 107
 
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD TOXIC fase_toxic
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD LIGHT fase_food
+    (13) fase_light -> fase_food .
+
+  ! shift/reduce conflict for UNLOAD resolved as shift
+    UNLOAD          shift and go to state 116
+
+  ! UNLOAD          [ reduce using rule 13 (fase_light -> fase_food .) ]
+
+
+state 108
+
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD LIGHT fase_toxic
+    (14) fase_light -> fase_toxic .
+
+  ! shift/reduce conflict for UNLOAD resolved as shift
+    UNLOAD          shift and go to state 117
+
+  ! UNLOAD          [ reduce using rule 14 (fase_light -> fase_toxic .) ]
+
+
+state 109
+
+    (9) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD FOOD fase_light
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD FOOD fase_food
+
+    UNLOAD          shift and go to state 118
+
+
+state 110
+
+    (10) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD TOXIC fase_light
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD TOXIC fase_toxic
+
+    UNLOAD          shift and go to state 119
+
+
+state 111
+
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD LIGHT fase_food
 
     UNLOAD          shift and go to state 116
 
 
+state 112
+
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food . UNLOAD FOOD fase_food
+
+    UNLOAD          shift and go to state 120
+
+
 state 113
 
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD LIGHT fase_toxic
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD TOXIC fase_toxic
 
-    UNLOAD          shift and go to state 57
+    UNLOAD          shift and go to state 121
 
 
 state 114
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic . UNLOAD LIGHT fase_toxic
 
-    PESO_LEVE       shift and go to state 117
+    UNLOAD          shift and go to state 117
 
 
 state 115
 
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . FOOD fase_food
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD . LIGHT fase_light
 
-    FOOD            shift and go to state 118
+    LIGHT           shift and go to state 122
 
 
 state 116
 
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . TOXIC fase_toxic
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . LIGHT fase_food
 
-    TOXIC           shift and go to state 119
+    LIGHT           shift and go to state 123
 
 
 state 117
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_light UNLOAD LIGHT fase_light
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD LIGHT fase_toxic
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD LIGHT fase_food
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . LIGHT fase_toxic
 
-    KG              shift and go to state 120
+    LIGHT           shift and go to state 124
 
 
 state 118
 
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD . fase_food
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
+    (9) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . FOOD fase_light
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . FOOD fase_food
 
-    SAIL            shift and go to state 48
-    LOAD            shift and go to state 46
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
+    FOOD            shift and go to state 125
 
-    fase_food                      shift and go to state 121
-    empty                          shift and go to state 49
 
 state 119
 
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC . fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (21) empty -> .
+    (10) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . TOXIC fase_light
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . TOXIC fase_toxic
 
-    LOAD            shift and go to state 50
-    SAIL            shift and go to state 52
-    END             reduce using rule 21 (empty -> .)
-    UNLOAD          reduce using rule 21 (empty -> .)
+    TOXIC           shift and go to state 126
 
-    fase_toxic                     shift and go to state 122
-    empty                          shift and go to state 53
 
 state 120
 
-    (6) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_light UNLOAD LIGHT fase_light
-    (18) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD LIGHT fase_toxic
-    (14) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD LIGHT fase_food
-    (6) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
-    (7) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
-    (8) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
-    (9) fase_light -> . SAIL TO NOME fase_light
-    (10) fase_light -> . empty
-    (11) fase_light -> . fase_food
-    (12) fase_light -> . fase_toxic
-    (17) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
-    (18) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
-    (19) fase_toxic -> . SAIL TO NOME fase_toxic
-    (20) fase_toxic -> . empty
-    (13) fase_food -> . SAIL TO NOME fase_food
-    (14) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
-    (15) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
-    (16) fase_food -> . empty
-    (21) empty -> .
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD . FOOD fase_food
 
-    LOAD            shift and go to state 92
-    SAIL            shift and go to state 95
-    UNLOAD          reduce using rule 21 (empty -> .)
+    FOOD            shift and go to state 127
 
-    fase_light                     shift and go to state 41
-    fase_toxic                     shift and go to state 43
-    fase_food                      shift and go to state 42
-    empty                          shift and go to state 96
 
 state 121
 
-    (15) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD . TOXIC fase_toxic
 
-    UNLOAD          reduce using rule 15 (fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .)
-    END             reduce using rule 15 (fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .)
+    TOXIC           shift and go to state 128
 
 
 state 122
 
-    (17) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT . fase_light
+    (8) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (11) fase_light -> . SAIL TO NOME fase_light
+    (12) fase_light -> . empty
+    (13) fase_light -> . fase_food
+    (14) fase_light -> . fase_toxic
+    (23) empty -> .
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
 
-    UNLOAD          reduce using rule 17 (fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .)
-    END             reduce using rule 17 (fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .)
+    LOAD            shift and go to state 34
+    SAIL            shift and go to state 38
+    UNLOAD          reduce using rule 23 (empty -> .)
 
+    fase_light                     shift and go to state 129
+    fase_food                      shift and go to state 36
+    fase_toxic                     shift and go to state 37
+    empty                          shift and go to state 39
+
+state 123
+
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT . fase_food
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
+
+    SAIL            shift and go to state 42
+    LOAD            shift and go to state 40
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_food                      shift and go to state 130
+    empty                          shift and go to state 43
+
+state 124
+
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT . fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
+
+    LOAD            shift and go to state 44
+    SAIL            shift and go to state 46
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_toxic                     shift and go to state 131
+    empty                          shift and go to state 47
+
+state 125
+
+    (9) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD . fase_light
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD . fase_food
+    (8) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (11) fase_light -> . SAIL TO NOME fase_light
+    (12) fase_light -> . empty
+    (13) fase_light -> . fase_food
+    (14) fase_light -> . fase_toxic
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+
+    LOAD            shift and go to state 34
+    SAIL            shift and go to state 38
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_food                      shift and go to state 132
+    fase_light                     shift and go to state 133
+    fase_toxic                     shift and go to state 37
+    empty                          shift and go to state 39
+
+state 126
+
+    (10) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC . fase_light
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC . fase_toxic
+    (8) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (11) fase_light -> . SAIL TO NOME fase_light
+    (12) fase_light -> . empty
+    (13) fase_light -> . fase_food
+    (14) fase_light -> . fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+
+    LOAD            shift and go to state 134
+    SAIL            shift and go to state 137
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_toxic                     shift and go to state 135
+    fase_light                     shift and go to state 136
+    fase_food                      shift and go to state 36
+    empty                          shift and go to state 138
+
+state 127
+
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD . fase_food
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
+
+    SAIL            shift and go to state 42
+    LOAD            shift and go to state 40
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_food                      shift and go to state 139
+    empty                          shift and go to state 43
+
+state 128
+
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC . fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (23) empty -> .
+
+    LOAD            shift and go to state 44
+    SAIL            shift and go to state 46
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_toxic                     shift and go to state 140
+    empty                          shift and go to state 47
+
+state 129
+
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light .
+
+    UNLOAD          reduce using rule 8 (fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light .)
+
+
+state 130
+
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food .
+
+    UNLOAD          reduce using rule 16 (fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food .)
+
+
+state 131
+
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic .
+
+    UNLOAD          reduce using rule 20 (fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic .)
+
+
+state 132
+
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .
+    (13) fase_light -> fase_food .
+
+  ! reduce/reduce conflict for UNLOAD resolved using rule 13 (fase_light -> fase_food .)
+    UNLOAD          reduce using rule 13 (fase_light -> fase_food .)
+
+  ! UNLOAD          [ reduce using rule 17 (fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .) ]
+
+
+state 133
+
+    (9) fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light .
+
+    UNLOAD          reduce using rule 9 (fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light .)
+
+
+state 134
+
+    (8) fase_light -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (19) fase_toxic -> LOAD . TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (16) fase_food -> LOAD . LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> LOAD . FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+
+    LIGHT           shift and go to state 141
+    FOOD            shift and go to state 50
+    TOXIC           shift and go to state 51
+
+
+state 135
+
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .
+    (14) fase_light -> fase_toxic .
+
+  ! reduce/reduce conflict for UNLOAD resolved using rule 14 (fase_light -> fase_toxic .)
+    UNLOAD          reduce using rule 14 (fase_light -> fase_toxic .)
+
+  ! UNLOAD          [ reduce using rule 19 (fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .) ]
+
+
+state 136
+
+    (10) fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light .
+
+    UNLOAD          reduce using rule 10 (fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light .)
+
+
+state 137
+
+    (11) fase_light -> SAIL . TO NOME fase_light
+    (21) fase_toxic -> SAIL . TO NOME fase_toxic
+    (15) fase_food -> SAIL . TO NOME fase_food
+
+    TO              shift and go to state 142
+
+
+state 138
+
+    (12) fase_light -> empty .
+    (22) fase_toxic -> empty .
+    (18) fase_food -> empty .
+
+  ! reduce/reduce conflict for UNLOAD resolved using rule 12 (fase_light -> empty .)
+  ! reduce/reduce conflict for UNLOAD resolved using rule 12 (fase_light -> empty .)
+    UNLOAD          reduce using rule 12 (fase_light -> empty .)
+
+  ! UNLOAD          [ reduce using rule 22 (fase_toxic -> empty .) ]
+  ! UNLOAD          [ reduce using rule 18 (fase_food -> empty .) ]
+
+
+state 139
+
+    (17) fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .
+
+    UNLOAD          reduce using rule 17 (fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food .)
+
+
+state 140
+
+    (19) fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .
+
+    UNLOAD          reduce using rule 19 (fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic .)
+
+
+state 141
+
+    (8) fase_light -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (20) fase_toxic -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (16) fase_food -> LOAD LIGHT . NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+
+    NOME            shift and go to state 143
+
+
+state 142
+
+    (11) fase_light -> SAIL TO . NOME fase_light
+    (21) fase_toxic -> SAIL TO . NOME fase_toxic
+    (15) fase_food -> SAIL TO . NOME fase_food
+
+    NOME            shift and go to state 144
+
+
+state 143
+
+    (8) fase_light -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (20) fase_toxic -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (16) fase_food -> LOAD LIGHT NOME . WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+
+    WEIGHT          shift and go to state 145
+
+
+state 144
+
+    (11) fase_light -> SAIL TO NOME . fase_light
+    (21) fase_toxic -> SAIL TO NOME . fase_toxic
+    (15) fase_food -> SAIL TO NOME . fase_food
+    (8) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (11) fase_light -> . SAIL TO NOME fase_light
+    (12) fase_light -> . empty
+    (13) fase_light -> . fase_food
+    (14) fase_light -> . fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
+
+    LOAD            shift and go to state 134
+    SAIL            shift and go to state 137
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_light                     shift and go to state 81
+    fase_toxic                     shift and go to state 83
+    fase_food                      shift and go to state 82
+    empty                          shift and go to state 138
+
+state 145
+
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT . PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+
+    PESO_LEVE       shift and go to state 146
+
+
+state 146
+
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_light UNLOAD LIGHT fase_light
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_toxic UNLOAD LIGHT fase_toxic
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE . KG fase_food UNLOAD LIGHT fase_food
+
+    KG              shift and go to state 147
+
+
+state 147
+
+    (8) fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_light UNLOAD LIGHT fase_light
+    (20) fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_toxic UNLOAD LIGHT fase_toxic
+    (16) fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG . fase_food UNLOAD LIGHT fase_food
+    (8) fase_light -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light
+    (9) fase_light -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light
+    (10) fase_light -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light
+    (11) fase_light -> . SAIL TO NOME fase_light
+    (12) fase_light -> . empty
+    (13) fase_light -> . fase_food
+    (14) fase_light -> . fase_toxic
+    (19) fase_toxic -> . LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic
+    (20) fase_toxic -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic
+    (21) fase_toxic -> . SAIL TO NOME fase_toxic
+    (22) fase_toxic -> . empty
+    (15) fase_food -> . SAIL TO NOME fase_food
+    (16) fase_food -> . LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food
+    (17) fase_food -> . LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food
+    (18) fase_food -> . empty
+    (23) empty -> .
+
+    LOAD            shift and go to state 134
+    SAIL            shift and go to state 137
+    UNLOAD          reduce using rule 23 (empty -> .)
+
+    fase_light                     shift and go to state 106
+    fase_toxic                     shift and go to state 108
+    fase_food                      shift and go to state 107
+    empty                          shift and go to state 138
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for UNLOAD in state 42 resolved as shift
-WARNING: shift/reduce conflict for UNLOAD in state 43 resolved as shift
-WARNING: reduce/reduce conflict in state 9 resolved using rule (fase_heavy -> empty)
-WARNING: rejected rule (fase_light -> empty) in state 9
-WARNING: reduce/reduce conflict in state 9 resolved using rule (fase_heavy -> empty)
-WARNING: rejected rule (fase_food -> empty) in state 9
-WARNING: reduce/reduce conflict in state 9 resolved using rule (fase_heavy -> empty)
-WARNING: rejected rule (fase_toxic -> empty) in state 9
-WARNING: reduce/reduce conflict in state 28 resolved using rule (fase_heavy -> fase_light)
-WARNING: rejected rule (fase_light -> SAIL TO NOME fase_light) in state 28
-WARNING: reduce/reduce conflict in state 29 resolved using rule (fase_light -> fase_food)
-WARNING: rejected rule (fase_food -> SAIL TO NOME fase_food) in state 29
-WARNING: reduce/reduce conflict in state 30 resolved using rule (fase_light -> fase_toxic)
-WARNING: rejected rule (fase_toxic -> SAIL TO NOME fase_toxic) in state 30
-WARNING: reduce/reduce conflict in state 45 resolved using rule (fase_light -> empty)
-WARNING: rejected rule (fase_food -> empty) in state 45
-WARNING: reduce/reduce conflict in state 45 resolved using rule (fase_light -> empty)
-WARNING: rejected rule (fase_toxic -> empty) in state 45
-WARNING: reduce/reduce conflict in state 87 resolved using rule (fase_light -> fase_food)
-WARNING: rejected rule (fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food) in state 87
-WARNING: reduce/reduce conflict in state 93 resolved using rule (fase_light -> fase_toxic)
-WARNING: rejected rule (fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic) in state 93
-WARNING: reduce/reduce conflict in state 96 resolved using rule (fase_light -> empty)
-WARNING: rejected rule (fase_toxic -> empty) in state 96
-WARNING: reduce/reduce conflict in state 96 resolved using rule (fase_light -> empty)
-WARNING: rejected rule (fase_food -> empty) in state 96
+WARNING: shift/reduce conflict for UNLOAD in state 107 resolved as shift
+WARNING: shift/reduce conflict for UNLOAD in state 108 resolved as shift
+WARNING: reduce/reduce conflict in state 39 resolved using rule (fase_light -> empty)
+WARNING: rejected rule (fase_food -> empty) in state 39
+WARNING: reduce/reduce conflict in state 39 resolved using rule (fase_light -> empty)
+WARNING: rejected rule (fase_toxic -> empty) in state 39
+WARNING: reduce/reduce conflict in state 82 resolved using rule (fase_light -> fase_food)
+WARNING: rejected rule (fase_food -> SAIL TO NOME fase_food) in state 82
+WARNING: reduce/reduce conflict in state 83 resolved using rule (fase_light -> fase_toxic)
+WARNING: rejected rule (fase_toxic -> SAIL TO NOME fase_toxic) in state 83
+WARNING: reduce/reduce conflict in state 132 resolved using rule (fase_light -> fase_food)
+WARNING: rejected rule (fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food) in state 132
+WARNING: reduce/reduce conflict in state 135 resolved using rule (fase_light -> fase_toxic)
+WARNING: rejected rule (fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic) in state 135
+WARNING: reduce/reduce conflict in state 138 resolved using rule (fase_light -> empty)
+WARNING: rejected rule (fase_toxic -> empty) in state 138
+WARNING: reduce/reduce conflict in state 138 resolved using rule (fase_light -> empty)
+WARNING: rejected rule (fase_food -> empty) in state 138

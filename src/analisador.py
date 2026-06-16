@@ -44,15 +44,29 @@ def p_S(p):
     p[0] = {'route_name': p[2], 'commands': p[4]}
 
 # --- FASE HEAVY ---
-def p_fase_heavy_load(p):
+def p_fase_heavy_load_heavy(p):
     '''fase_heavy : LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavy'''
     load_cmd = {'action': 'load', 'type': 'heavy', 'name': p[3], 'weight': p[5]}
     unload_cmd = {'action': 'unload', 'type': 'heavy', 'name': p[3], 'weight': p[5]}
     p[0] = [load_cmd] + p[7] + [unload_cmd] + p[10]
 
-def p_fase_heavy_light(p):
-    '''fase_heavy : fase_light'''
-    p[0] = p[1]
+def p_fase_heavy_load_light(p):
+    '''fase_heavy : LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_heavy'''
+    load_cmd = {'action': 'load', 'type': 'light', 'name': p[3], 'weight': p[5]}
+    unload_cmd = {'action': 'unload', 'type': 'light', 'name': p[3], 'weight': p[5]}
+    p[0] = [load_cmd] + p[7] + [unload_cmd] + p[10]
+
+def p_fase_heavy_load_food(p):
+    '''fase_heavy : LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_heavy'''
+    load_cmd = {'action': 'load', 'type': 'food', 'name': p[3], 'weight': p[5]}
+    unload_cmd = {'action': 'unload', 'type': 'food', 'name': p[3], 'weight': p[5]}
+    p[0] = [load_cmd] + p[7] + [unload_cmd] + p[10]
+
+def p_fase_heavy_load_toxic(p):
+    '''fase_heavy : LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_heavy'''
+    load_cmd = {'action': 'load', 'type': 'toxic', 'name': p[3], 'weight': p[5]}
+    unload_cmd = {'action': 'unload', 'type': 'toxic', 'name': p[3], 'weight': p[5]}
+    p[0] = [load_cmd] + p[7] + [unload_cmd] + p[10]
 
 def p_fase_heavy_sail(p):
     '''fase_heavy : SAIL TO NOME fase_heavy'''

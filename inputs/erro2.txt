@@ -1,0 +1,10 @@
+route Rota_light_entre_food_e_toxic begin
+    load heavy Ferro weight 4000 kg
+    load food Trigo weight 200 kg
+    load light Caixa_Vazia weight 50 kg
+    load toxic Pesticida weight 100 kg  
+    unload toxic
+    unload light
+    unload trigo
+    unload heavy
+end

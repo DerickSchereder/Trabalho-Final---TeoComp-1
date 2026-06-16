@@ -1,25 +1,27 @@
 <S> ::= "route" <Nome> "begin" <FaseHeavy> "end"
 
-<FaseHeavy> ::= "load heavy" <Nome> "weight" <PesoHeavy> "kg" <FaseHeavy> "unload heavy" <FaseHeavy>
-              | <FaseLight>
-              | "sail to" <Nome> <FaseHeavy>
-              | ""
+<FaseHeavy>  ::= "load heavy" <Nome> "weight" <PesoHeavy> "kg" <FaseHeavy> "unload heavy" <FaseHeavy>
+               | "load light" <Nome> "weight" <PesoLeve>  "kg" <FaseLight> "unload light" <FaseHeavy>
+               | "load food"  <Nome> "weight" <PesoLeve>  "kg" <FaseFood>  "unload food"  <FaseHeavy>
+               | "load toxic" <Nome> "weight" <PesoLeve>  "kg" <FaseToxic> "unload toxic" <FaseHeavy>
+               | "sail to" <Nome> <FaseHeavy>
+               | ""
 
-<FaseLight> ::= "load light" <Nome> "weight" <PesoLeve> "kg" <FaseLight> "unload light" <FaseLight>
-              | <FaseFood>
-              | <FaseToxic>
-              | "sail to" <Nome> <FaseLight>
-              | ""
+<FaseLight>  ::= "load light" <Nome> "weight" <PesoLeve>  "kg" <FaseLight> "unload light" <FaseLight>
+               | "load food"  <Nome> "weight" <PesoLeve>  "kg" <FaseFood>  "unload food"  <FaseLight>
+               | "load toxic" <Nome> "weight" <PesoLeve>  "kg" <FaseToxic> "unload toxic" <FaseLight>
+               | "sail to" <Nome> <FaseLight>
+               | ""
 
-<FaseFood> ::= "load food" <Nome> "weight" <PesoLeve> "kg" <FaseFood> "unload food" <FaseFood>
-             | "load light" <Nome> "weight" <PesoLeve> "kg" <FaseFood> "unload light" <FaseFood>
-             | "sail to" <Nome> <FaseFood>
-             | ""
+<FaseFood>   ::= "load food"  <Nome> "weight" <PesoLeve>  "kg" <FaseFood>  "unload food"  <FaseFood>
+               | "load light" <Nome> "weight" <PesoLeve>  "kg" <FaseFood>  "unload light" <FaseFood>
+               | "sail to" <Nome> <FaseFood>
+               | ""
 
-<FaseToxic> ::= "load toxic" <Nome> "weight" <PesoLeve> "kg" <FaseToxic> "unload toxic" <FaseToxic>
-              | "load light" <Nome> "weight" <PesoLeve> "kg" <FaseToxic> "unload light" <FaseToxic>
-              | "sail to" <Nome> <FaseToxic>
-              | ""
+<FaseToxic>  ::= "load toxic" <Nome> "weight" <PesoLeve>  "kg" <FaseToxic> "unload toxic" <FaseToxic>
+               | "load light" <Nome> "weight" <PesoLeve>  "kg" <FaseToxic> "unload light" <FaseToxic>
+               | "sail to" <Nome> <FaseToxic>
+               | ""
 
 /* Garantia de que os pesos de light e heavy fiquem nos intervalos [1, 999] e [2000, 9999], respectivamente */
 <PesoLeve> ::= <D1_9> | <D1_9> <D> | <D1_9> <D> <D>

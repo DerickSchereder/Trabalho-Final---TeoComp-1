@@ -1,6 +1,8 @@
 route Rota_Um begin
-        load heavy Barras_Aco weight 4500 kg
-    sail to Porto_Seguro
+    sail to Tupi
+        load heavy Ferro weight 4500 kg
+    sail to Jua
+        load heavy Madeira weight 4500 kg
         load light Eletronicos weight 500 kg
         load food Comida weight 500 kg
     sail to Porto_Destino
