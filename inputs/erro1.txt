@@ -1,0 +1,8 @@
+route ROTA_ERRO1 begin
+    load food Macas weight 100 kg         
+    load food Laranjas weight 100 kg  
+    unload food                       
+    load toxic Veneno weight 100 kg
+    unload toxic
+    unload food
+    end

@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'BEGIN END HEAVY KG LIGHT LOAD NOME PESO_HEAVY PESO_LEVE ROUTE SAIL TO UNLOAD WEIGHTs : ROUTE NOME BEGIN fase_heavy ENDfase_heavy : LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavyfase_heavy : fase_lightfase_heavy : SAIL TO NOME fase_heavyfase_heavy : emptyfase_light : LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_lightfase_light : SAIL TO NOME fase_lightfase_light : emptyempty :'
+_lr_signature = 'BEGIN END FOOD HEAVY KG LIGHT LOAD NOME PESO_HEAVY PESO_LEVE ROUTE SAIL TO TOXIC UNLOAD WEIGHTs : ROUTE NOME BEGIN fase_heavy ENDfase_heavy : LOAD HEAVY NOME WEIGHT PESO_HEAVY KG fase_heavy UNLOAD HEAVY fase_heavyfase_heavy : fase_lightfase_heavy : SAIL TO NOME fase_heavyfase_heavy : emptyfase_light : LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_lightfase_light : LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_lightfase_light : LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_lightfase_light : SAIL TO NOME fase_lightfase_light : emptyfase_light : fase_foodfase_light : fase_toxicfase_food : SAIL TO NOME fase_foodfase_food : LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_foodfase_food : LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_foodfase_food : emptyfase_toxic : LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxicfase_toxic : LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxicfase_toxic : SAIL TO NOME fase_toxicfase_toxic : emptyempty :'
     
-_lr_action_items = {'ROUTE':([0,],[2,]),'$end':([1,10,],[0,-1,]),'NOME':([2,11,12,13,32,],[3,14,15,16,35,]),'BEGIN':([3,],[4,]),'LOAD':([4,16,23,24,33,34,35,],[6,6,6,26,6,26,26,]),'SAIL':([4,16,23,24,33,34,35,],[8,8,8,28,8,28,28,]),'END':([4,5,7,9,16,19,20,29,33,34,35,36,37,38,],[-9,10,-3,-5,-9,-4,-3,-8,-9,-9,-9,-2,-6,-7,]),'HEAVY':([6,30,],[11,33,]),'LIGHT':([6,26,31,],[12,12,34,]),'UNLOAD':([7,9,16,19,20,23,24,25,27,29,33,34,35,36,37,38,],[-3,-5,-9,-4,-3,-9,-9,30,31,-8,-9,-9,-9,-2,-6,-7,]),'TO':([8,28,],[13,32,]),'WEIGHT':([14,15,],[17,18,]),'PESO_HEAVY':([17,],[21,]),'PESO_LEVE':([18,],[22,]),'KG':([21,22,],[23,24,]),}
+_lr_action_items = {'ROUTE':([0,],[2,]),'$end':([1,12,],[0,-1,]),'NOME':([2,13,14,15,16,17,58,59,60,62,63,64,66,102,103,],[3,18,19,20,21,22,71,72,73,75,76,77,79,108,109,]),'BEGIN':([3,],[4,]),'LOAD':([4,22,35,36,37,38,67,68,69,70,71,74,75,78,79,104,105,106,107,109,118,119,120,],[6,6,6,40,46,50,6,40,46,50,40,40,46,92,50,46,46,50,50,92,46,50,92,]),'SAIL':([4,22,35,36,37,38,67,68,69,70,71,74,75,78,79,104,105,106,107,109,118,119,120,],[8,8,8,44,48,52,8,44,48,52,44,44,48,95,52,48,48,52,52,95,48,52,95,]),'END':([4,5,7,9,10,11,22,27,28,29,30,45,49,53,67,68,69,70,71,74,75,78,79,80,81,82,83,84,87,88,89,93,94,96,97,109,118,119,121,122,],[-21,12,-3,-5,-11,-12,-21,-4,-3,-11,-12,-10,-16,-20,-21,-21,-21,-21,-21,-21,-21,-21,-21,-2,-6,-14,-18,-9,-11,-7,-13,-12,-8,-10,-19,-21,-21,-21,-15,-17,]),'HEAVY':([6,54,],[13,67,]),'LIGHT':([6,40,46,50,55,56,57,92,],[14,14,59,64,68,69,70,102,]),'FOOD':([6,40,46,61,92,115,],[15,15,60,74,15,118,]),'TOXIC':([6,40,50,65,92,116,],[16,16,63,78,16,119,]),'UNLOAD':([7,9,10,11,22,27,28,29,30,35,36,37,38,39,41,42,43,45,47,49,51,53,67,68,69,70,71,74,75,78,79,80,81,82,83,84,87,88,89,93,94,96,97,104,105,106,107,109,110,111,112,113,118,119,120,121,122,],[-3,-5,-11,-12,-21,-4,-3,-11,-12,-21,-21,-21,-21,54,55,56,57,-10,61,-16,65,-20,-21,-21,-21,-21,-21,-21,-21,-21,-21,-2,-6,-14,-18,-9,-11,-7,-13,-12,-8,-10,-19,-21,-21,-21,-21,-21,56,115,116,57,-21,-21,-21,-15,-17,]),'TO':([8,44,48,52,95,],[17,58,62,66,103,]),'WEIGHT':([18,19,20,21,72,73,76,77,108,],[23,24,25,26,85,86,90,91,114,]),'PESO_HEAVY':([23,],[31,]),'PESO_LEVE':([24,25,26,85,86,90,91,114,],[32,33,34,98,99,100,101,117,]),'KG':([31,32,33,34,98,99,100,101,117,],[35,36,37,38,104,105,106,107,120,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'s':([0,],[1,]),'fase_heavy':([4,16,23,33,],[5,19,25,36,]),'fase_light':([4,16,23,24,33,34,35,],[7,20,7,27,7,37,38,]),'empty':([4,16,23,24,33,34,35,],[9,9,9,29,9,29,29,]),}
+_lr_goto_items = {'s':([0,],[1,]),'fase_heavy':([4,22,35,67,],[5,27,39,80,]),'fase_light':([4,22,35,36,67,68,71,74,78,109,120,],[7,28,7,41,7,81,84,88,94,84,41,]),'empty':([4,22,35,36,37,38,67,68,69,70,71,74,75,78,79,104,105,106,107,109,118,119,120,],[9,9,9,45,49,53,9,45,49,53,45,45,49,96,53,49,49,53,53,96,49,53,96,]),'fase_food':([4,22,35,36,37,67,68,69,71,74,75,78,104,105,109,118,120,],[10,29,10,42,47,10,10,82,29,87,89,10,110,111,29,121,42,]),'fase_toxic':([4,22,35,36,38,67,68,70,71,74,78,79,106,107,109,119,120,],[11,30,11,43,51,11,11,83,30,11,93,97,112,113,30,122,43,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -32,8 +32,20 @@ _lr_productions = [
   ('fase_heavy -> fase_light','fase_heavy',1,'p_fase_heavy_light','analisador.py',54),
   ('fase_heavy -> SAIL TO NOME fase_heavy','fase_heavy',4,'p_fase_heavy_sail','analisador.py',58),
   ('fase_heavy -> empty','fase_heavy',1,'p_fase_heavy_empty','analisador.py',62),
-  ('fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light','fase_light',10,'p_fase_light_load','analisador.py',67),
-  ('fase_light -> SAIL TO NOME fase_light','fase_light',4,'p_fase_light_sail','analisador.py',73),
-  ('fase_light -> empty','fase_light',1,'p_fase_light_empty','analisador.py',77),
-  ('empty -> <empty>','empty',0,'p_empty','analisador.py',82),
+  ('fase_light -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_light UNLOAD LIGHT fase_light','fase_light',10,'p_fase_light_load_light','analisador.py',67),
+  ('fase_light -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_light','fase_light',10,'p_fase_light_load_food','analisador.py',73),
+  ('fase_light -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light','fase_light',10,'p_fase_light_load_toxic','analisador.py',79),
+  ('fase_light -> SAIL TO NOME fase_light','fase_light',4,'p_fase_light_sail','analisador.py',85),
+  ('fase_light -> empty','fase_light',1,'p_fase_light_empty','analisador.py',89),
+  ('fase_light -> fase_food','fase_light',1,'p_fase_light_food','analisador.py',93),
+  ('fase_light -> fase_toxic','fase_light',1,'p_fase_light_toxic','analisador.py',97),
+  ('fase_food -> SAIL TO NOME fase_food','fase_food',4,'p_fase_food_sail','analisador.py',103),
+  ('fase_food -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_food UNLOAD LIGHT fase_food','fase_food',10,'p_fase_food_load_light','analisador.py',107),
+  ('fase_food -> LOAD FOOD NOME WEIGHT PESO_LEVE KG fase_food UNLOAD FOOD fase_food','fase_food',10,'p_fase_food_load_food','analisador.py',113),
+  ('fase_food -> empty','fase_food',1,'p_fase_food_empty','analisador.py',119),
+  ('fase_toxic -> LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_toxic','fase_toxic',10,'p_fase_toxic_load_toxic','analisador.py',125),
+  ('fase_toxic -> LOAD LIGHT NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD LIGHT fase_toxic','fase_toxic',10,'p_fase_toxic_load_light','analisador.py',131),
+  ('fase_toxic -> SAIL TO NOME fase_toxic','fase_toxic',4,'p_fase_toxic_sail','analisador.py',137),
+  ('fase_toxic -> empty','fase_toxic',1,'p_fase_toxic_empty','analisador.py',141),
+  ('empty -> <empty>','empty',0,'p_empty','analisador.py',146),
 ]

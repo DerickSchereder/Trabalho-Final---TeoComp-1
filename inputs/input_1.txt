@@ -2,7 +2,11 @@ route Rota_Um begin
         load heavy Barras_Aco weight 4500 kg
     sail to Porto_Seguro
         load light Eletronicos weight 500 kg
+        load food Comida weight 500 kg
     sail to Porto_Destino
+        unload food 
+        load toxic Veneno weight 500 kg
+        unload toxic
         unload light
         unload heavy
     end
