@@ -221,19 +221,18 @@ def generate_report(ast):
             case 'load':
                 total_weight += cmd['weight']
                 total_transported_containers += 1
+                print(f"EMBARQUE: {cmd['name']} ({cmd['type']}) - {cmd['weight']}kg")
                 raise_load_warning(cmd['type'], container_count)
                 container_count[cmd['type']] += 1
-                print(f"EMBARQUE: {cmd['name']} ({cmd['type']}) - {cmd['weight']}kg")
+                
                 
 
             case 'unload':
                 total_weight -= cmd['weight']
+                print(f"DESEMBARQUE: {cmd['name']} ({cmd['type']})")
                 raise_unload_warning(cmd['type'], container_count)
                 container_count[cmd['type']] -= 1
-                print(f"DESEMBARQUE: {cmd['name']} ({cmd['type']})")
-
-
-
+                
     if total_weight == 0 :
         print('\nSTATUS FINAL:')
         print('Pilha vazia e rota concluída.')
