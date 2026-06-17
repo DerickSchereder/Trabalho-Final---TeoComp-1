@@ -1,0 +1,3 @@
+route R4 begin
+    load heavy Steel weight 5000 kg
+end 

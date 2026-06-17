@@ -1,0 +1,4 @@
+route R2 begin
+    load light Electronics weight 300 kg
+    load heavy Steel weight 5000 kg
+end

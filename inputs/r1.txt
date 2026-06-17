@@ -1,0 +1,7 @@
+route R1 begin
+    load heavy Steel weight 5000 kg
+    sail to Lisboa
+    load light Electronics weight 300 kg
+    unload light
+    unload heavy
+end 

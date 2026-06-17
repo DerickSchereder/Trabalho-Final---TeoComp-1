@@ -1,0 +1,4 @@
+route R3 begin
+    load food Rice weight 200 kg
+    load toxic Mercury weight 50 kg
+end
