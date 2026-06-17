@@ -92,7 +92,7 @@ def p_fase_light_load_food(p):
 def p_fase_light_load_toxic(p):
     '''fase_light : LOAD TOXIC NOME WEIGHT PESO_LEVE KG fase_toxic UNLOAD TOXIC fase_light'''
     load_cmd = {'action': 'load', 'type': 'toxic', 'name': p[3], 'weight': p[5]}
-    unload_cmd = {'action': 'unload', 'type': 'food', 'name': p[3], 'weight': p[5]}
+    unload_cmd = {'action': 'unload', 'type': 'toxic', 'name': p[3], 'weight': p[5]}
     p[0] = [load_cmd] + p[7] + [unload_cmd] + p[10]
 
 def p_fase_light_sail(p):
