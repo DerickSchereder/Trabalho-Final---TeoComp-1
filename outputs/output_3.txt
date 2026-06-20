@@ -1,0 +1,30 @@
+RELATÓRIO DE NAVEGAÇÃO | Rota_Tres
+__________________________________________________
+
+Porto_inicial:
+EMBARQUE: Macas (food) - 500kg
+[AVISO]: Alimentos a bordo, proibida a entrada de cargas tóxicas
+
+NAVEGANDO PARA: Vila_das_macas | Peso a bordo: 500kg
+
+Vila_das_macas:
+DESEMBARQUE: Macas (food)
+[AVISO]: Sem alimentos a bordo, liberada a entrada de cargas tóxicas
+EMBARQUE: Macas_podres (toxic) - 900kg
+[AVISO]: Carga tóxica a bordo, proibida a entrada de alimentos
+
+NAVEGANDO PARA: Esgoto | Peso a bordo: 900kg
+
+Esgoto:
+DESEMBARQUE: Macas_podres (toxic)
+[AVISO]: Sem cargas tóxicas a bordo, liberada a entrada de alimentos
+EMBARQUE: Lixo (heavy) - 2000kg
+
+NAVEGANDO PARA: Guaiba | Peso a bordo: 2000kg
+
+Guaiba:
+DESEMBARQUE: Lixo (heavy)
+
+STATUS FINAL:
+Pilha vazia e rota concluída.
+Numero de cargas transportadas: 3

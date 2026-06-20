@@ -1,0 +1,11 @@
+route Rota_Quatro begin
+        load heavy Container_Base weight 3500 kg
+        load light Caixa_Alfa weight 200 kg
+        load light Caixa_Beta weight 150 kg
+        load food Suco_Concentrado weight 400 kg
+    sail to Porto_Destino
+        unload food
+        unload light
+        unload light
+        unload heavy
+end

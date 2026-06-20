@@ -1,0 +1,34 @@
+RELATÓRIO DE NAVEGAÇÃO | Rota_Um
+__________________________________________________
+
+Porto_inicial:
+
+NAVEGANDO PARA: Porto_UM | Peso a bordo: 0kg
+
+Porto_UM:
+EMBARQUE: Ferro (heavy) - 4500kg
+
+NAVEGANDO PARA: Porto_dois | Peso a bordo: 4500kg
+
+Porto_dois:
+EMBARQUE: Madeira (heavy) - 4500kg
+EMBARQUE: Eletronicos (light) - 500kg
+EMBARQUE: Comida (food) - 500kg
+[AVISO]: Alimentos a bordo, proibida a entrada de cargas tóxicas
+
+NAVEGANDO PARA: Porto_Destino | Peso a bordo: 10000kg
+
+Porto_Destino:
+DESEMBARQUE: Comida (food)
+[AVISO]: Sem alimentos a bordo, liberada a entrada de cargas tóxicas
+EMBARQUE: Veneno (toxic) - 500kg
+[AVISO]: Carga tóxica a bordo, proibida a entrada de alimentos
+DESEMBARQUE: Veneno (toxic)
+[AVISO]: Sem cargas tóxicas a bordo, liberada a entrada de alimentos
+DESEMBARQUE: Eletronicos (light)
+DESEMBARQUE: Madeira (heavy)
+DESEMBARQUE: Ferro (heavy)
+
+STATUS FINAL:
+Pilha vazia e rota concluída.
+Numero de cargas transportadas: 5

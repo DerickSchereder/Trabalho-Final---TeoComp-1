@@ -1,7 +1,7 @@
 route Rota_Um begin
-    sail to Tupi
+    sail to Porto_UM
         load heavy Ferro weight 4500 kg
-    sail to Jua
+    sail to Porto_dois
         load heavy Madeira weight 4500 kg
         load light Eletronicos weight 500 kg
         load food Comida weight 500 kg

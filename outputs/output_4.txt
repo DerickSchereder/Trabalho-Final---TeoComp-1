@@ -1,0 +1,22 @@
+RELATÓRIO DE NAVEGAÇÃO | Rota_Quatro
+__________________________________________________
+
+Porto_inicial:
+EMBARQUE: Container_Base (heavy) - 3500kg
+EMBARQUE: Caixa_Alfa (light) - 200kg
+EMBARQUE: Caixa_Beta (light) - 150kg
+EMBARQUE: Suco_Concentrado (food) - 400kg
+[AVISO]: Alimentos a bordo, proibida a entrada de cargas tóxicas
+
+NAVEGANDO PARA: Porto_Destino | Peso a bordo: 4250kg
+
+Porto_Destino:
+DESEMBARQUE: Suco_Concentrado (food)
+[AVISO]: Sem alimentos a bordo, liberada a entrada de cargas tóxicas
+DESEMBARQUE: Caixa_Beta (light)
+DESEMBARQUE: Caixa_Alfa (light)
+DESEMBARQUE: Container_Base (heavy)
+
+STATUS FINAL:
+Pilha vazia e rota concluída.
+Numero de cargas transportadas: 4

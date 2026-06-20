@@ -1,0 +1,14 @@
+RELATÓRIO DE NAVEGAÇÃO | Rota_Dois
+__________________________________________________
+
+Porto_inicial:
+EMBARQUE: Base_Um (heavy) - 5000kg
+EMBARQUE: Caixa (light) - 50kg
+DESEMBARQUE: Caixa (light)
+EMBARQUE: Base_Dois (heavy) - 4000kg
+DESEMBARQUE: Base_Dois (heavy)
+DESEMBARQUE: Base_Um (heavy)
+
+STATUS FINAL:
+Pilha vazia e rota concluída.
+Numero de cargas transportadas: 3

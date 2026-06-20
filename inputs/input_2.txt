@@ -1,4 +1,4 @@
-route Rota_Toda_Errada begin
+route Rota_Dois begin
     load heavy Base_Um weight 5000 kg
     load light Caixa weight 50 kg
     unload light   

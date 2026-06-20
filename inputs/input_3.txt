@@ -1,0 +1,11 @@
+route Rota_Tres begin
+        load food Macas weight 500 kg
+    sail to Vila_das_macas
+        unload food
+        load toxic Macas_podres weight 900 kg
+    sail to Esgoto
+        unload toxic
+        load heavy Lixo weight 2000 kg 
+    sail to Guaiba
+        unload heavy 
+end
