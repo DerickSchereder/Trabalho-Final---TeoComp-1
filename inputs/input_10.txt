@@ -1,0 +1,6 @@
+route Rota_heavy_apos_toxic begin
+    load toxic Toxicidades weight 10 kg
+    load heavy Peso_Pesado weight 6000 kg
+    unload heavy
+    unload toxic
+end

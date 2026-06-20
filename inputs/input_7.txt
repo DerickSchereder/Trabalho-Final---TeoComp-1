@@ -1,0 +1,4 @@
+route Rota_Erro_Peso begin
+    load heavy Transformador weight 850 kg
+    unload heavy
+end

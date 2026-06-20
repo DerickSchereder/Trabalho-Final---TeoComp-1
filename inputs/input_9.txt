@@ -1,0 +1,6 @@
+route Rota_Erro_Pilha begin
+    load heavy Bloco_Granito weight 7000 kg
+    load light Painel_Solar weight 300 kg
+    unload heavy
+    unload light
+end

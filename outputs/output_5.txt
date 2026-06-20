@@ -1,0 +1,22 @@
+RELATÓRIO DE NAVEGAÇÃO | Rota_Cinco
+__________________________________________________
+
+Porto_inicial:
+EMBARQUE: Turbina_Eolica (heavy) - 9500kg
+EMBARQUE: Componentes (light) - 100kg
+
+NAVEGANDO PARA: Vitoria | Peso a bordo: 9600kg
+
+Vitoria:
+DESEMBARQUE: Componentes (light)
+DESEMBARQUE: Turbina_Eolica (heavy)
+EMBARQUE: Gerador_Diesel (heavy) - 6000kg
+
+NAVEGANDO PARA: Porto_Alegre | Peso a bordo: 6000kg
+
+Porto_Alegre:
+DESEMBARQUE: Gerador_Diesel (heavy)
+
+STATUS FINAL:
+Pilha vazia e rota concluída.
+Numero de cargas transportadas: 3

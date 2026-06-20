@@ -1,0 +1,8 @@
+route Rota_Erro_Esmagamento begin
+    load heavy Base weight 5000 kg
+    load light Caixa weight 500 kg
+    load heavy Chumbo weight 4000 kg
+    unload heavy
+    unload light
+    unload heavy
+end

@@ -1,0 +1,10 @@
+route Rota_Cinco begin
+        load heavy Turbina_Eolica weight 9500 kg
+        load light Componentes weight 100 kg
+    sail to Vitoria
+        unload light
+        unload heavy
+        load heavy Gerador_Diesel weight 6000 kg
+    sail to Porto_Alegre
+        unload heavy
+end

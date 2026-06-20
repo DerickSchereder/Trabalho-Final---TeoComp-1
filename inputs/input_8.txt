@@ -1,0 +1,8 @@
+route Rota_Erro_Quimico begin
+    load heavy Base_Suporte weight 4000 kg
+    load food Sacas_Arroz weight 300 kg
+    load toxic Mercurio weight 200 kg
+    unload toxic
+    unload food
+    unload heavy
+end
